@@ -13,7 +13,7 @@ import configureStore, { IAppState } from './store/Store';
 import { getAllCharacters } from './actions/CharacterActions';
 
 import './index.css';
-import App from './components/App';
+import App from './App';
 
 interface IProps {
   store: Store<IAppState>;

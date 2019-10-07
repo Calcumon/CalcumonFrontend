@@ -10,9 +10,6 @@ interface IProps {
   }
 
 class CharacterList extends React.Component<IProps> {
-    
-    
-
     public render() {
     return (
         <div>
