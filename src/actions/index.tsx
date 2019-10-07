@@ -3,14 +3,29 @@ import { ThunkAction } from 'redux-thunk';
 
 // Create Action Constants
 export enum todoActionTypes {
-    GET_ALL = 'GET_ALL',
+    ADD = 'ADD',
+    DELETE = 'DELETE'
   }
 
 // Interface for Get All Action Type
 export interface ICharacterGetAllAction {
-    type: CharacterActionTypes.GET_ALL;
-    characters: IItem[];
+    type: IItem.todoActionTypes.ADD;
+    type: IItem.todoActionTypes.DELETE;
+    list: IItem[];
   }
+
+  //action creator
+export const addTodo = Todo => ({
+  //it returns an action
+  
+  type: 'ADD', payload: Todo
+})
+
+export const removeTodo = Todo => ({
+
+  type: 'DELETE', payload: Todo
+})
+
 
 /* 
 Combine the action types with a union (we assume there are more)

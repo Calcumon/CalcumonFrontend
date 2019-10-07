@@ -10,6 +10,11 @@ interface IProps {
   }
 
 class CharacterList extends React.Component<IProps> {
+
+    handleSubmit = () => {
+        
+    }
+
     public render() {
     return (
         <div>
