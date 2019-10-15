@@ -1,13 +1,72 @@
 import React from 'react';
+import './loginPage.css'
 
 // TODO: What will be in our LoginInterface?
 interface LoginInterface {
+
 }
 
 const Login : React.FunctionComponent<LoginInterface> = () => {
     return (
-        <div>
-            <p> Hello World </p>
+    <div>
+    <link rel="stylesheet" href="../../css/landing-page.css">
+
+        {/* <!-- Calcumon Hero Image (Place Holder) --> */}
+        <div class="register-hero-container">
+            <img class="hero-image" src="../images/calcmon-hero.png" alt="calcmon hero text">
+        </div>
+
+
+        {/* <!-- Login Container  --> */}
+        <div class="login-form-container">
+            {/* <!-- Login Form  --> */}
+            <form class="login-form" action="/login" method="POST">
+
+                {/* <!-- Username --> */}
+                <div class="form-group">
+                    <input class="form-control" id="username" type="text" placeholder="USERNAME" name="username"/>
+                </div>
+
+                {/* <!-- Password --> */}
+                <div class="form-group">
+                    <input class="form-control" id="password" type="password" name="password" placeholder="PASSWORD"/>
+                </div>
+
+                {/* <!-- Login Button --> */}
+                <button class="btn btn-lg btn-info login-button" type="submit">LOGIN</button>
+
+                <p style="text-align:center"> Not Registered?</p>
+
+                {/* <!-- Signup Link--> */}
+                <a class="signup-link" href="/signup"> SIGN UP</a>
+
+
+            </form>
+
+
+        </div>
+
+        <a href="/gameplay"><img class="play-button" src="../images/math-calcmon2.png" alt=""></a>
+
+        <!-- <a href="/gameplay"><img class="play-button" src="../images/mathmon.svg" alt=""></a> -->
+
+        {/* <!-- See the Team! --> */}
+        <a class="team" href="/team">See the Team</a>
+
+
+        {/* <!-- Star Dust  --> */}
+        <div class="star-container">
+
+
+                <div id='stars'></div>
+                <div id='stars2'></div>
+                <div id='stars3'></div>
+                <div id='stars3'></div>
+
+        </div>
+            {/* <!-- Canvas Elements -->
+            <!-- <canvas class = "coin1" id="coinAnimation"></canvas>
+            <canvas class = "coin2" id="coinAnimation2"></canvas> --> */}
         </div>
     )
 }
