@@ -17,7 +17,7 @@ import { setAuthentication } from './actions/authenication'
 import request from './utils/request';
 
 //This is for authenicated route
-import authenicatedRoute from './highOrderComponents/AuthenicatedRoute'
+import AuthenicatedRoute from './highOrderComponents/AuthenicatedRoute';
 
 
 
@@ -35,6 +35,7 @@ export default class App extends React.Component  {
         <div>
           <Switch>
             <Route exact path ='/login' component={Login}/>
+            <AuthenticatedRoute path='/Dashboard' component={Dasboards} />
           </Switch> 
         </div>
     </Router>
