@@ -1,74 +1,69 @@
 import React from 'react';
-import './loginPage.css'
+import { request } from 'http';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import {Link} from 'react-router-dom'
+
+import { setAuthentication } from '../../actions/authentication'
 
 // TODO: What will be in our LoginInterface?
-interface LoginInterface {
+// interface LoginInterface {
 
-}
+// }
 
-const Login : React.FunctionComponent<LoginInterface> = () => {
+class Login extends React.Component {
+    
+    constructor(){
+        super(props);
+        this.state = { 
+            showErrorMessage: False
+        }
+    }
+
+    handleSignIn = (event) =>{
+        event.preventDefault();
+
+        const {login, password} = event.target
+
+        request('auth/tokem', {username: login, password})
+        .then((response=> {
+            this.setState({ showErrorMessage: False })
+            localStorage.setItem('token', response.data.token)
+            return request('/auth/token')
+        })
+        .then(response=> {
+            this.props.setAuthentication(response.data)
+            this.props.history.push('/landingPage')
+        })
+        .catch(response => {
+            this.setState({showErrorMessage: False})
+        })
+    }
+
+    render() {
     return (
-    <div>
-    <link rel="stylesheet" href="../../css/landing-page.css">
+              <div className="login">
+        <form onSubmit={this.handleSignIn} className="login-form">
+          <div>
+            <h1>Log in</h1>
+          </div>
 
-        {/* <!-- Calcumon Hero Image (Place Holder) --> */}
-        <div class="register-hero-container">
-            <img class="hero-image" src="../images/calcmon-hero.png" alt="calcmon hero text">
-        </div>
+          <div>
+            <input type="text" name="inputEmail" id="inputEmail" placeholder="Email address" required autoFocus />
+          </div>
 
-
-        {/* <!-- Login Container  --> */}
-        <div class="login-form-container">
-            {/* <!-- Login Form  --> */}
-            <form class="login-form" action="/login" method="POST">
-
-                {/* <!-- Username --> */}
-                <div class="form-group">
-                    <input class="form-control" id="username" type="text" placeholder="USERNAME" name="username"/>
-                </div>
-
-                {/* <!-- Password --> */}
-                <div class="form-group">
-                    <input class="form-control" id="password" type="password" name="password" placeholder="PASSWORD"/>
-                </div>
-
-                {/* <!-- Login Button --> */}
-                <button class="btn btn-lg btn-info login-button" type="submit">LOGIN</button>
-
-                <p style="text-align:center"> Not Registered?</p>
-
-                {/* <!-- Signup Link--> */}
-                <a class="signup-link" href="/signup"> SIGN UP</a>
-
-
-            </form>
-
-
-        </div>
-
-        <a href="/gameplay"><img class="play-button" src="../images/math-calcmon2.png" alt=""></a>
-
-        <!-- <a href="/gameplay"><img class="play-button" src="../images/mathmon.svg" alt=""></a> -->
-
-        {/* <!-- See the Team! --> */}
-        <a class="team" href="/team">See the Team</a>
-
-
-        {/* <!-- Star Dust  --> */}
-        <div class="star-container">
-
-
-                <div id='stars'></div>
-                <div id='stars2'></div>
-                <div id='stars3'></div>
-                <div id='stars3'></div>
-
-        </div>
-            {/* <!-- Canvas Elements -->
-            <!-- <canvas class = "coin1" id="coinAnimation"></canvas>
-            <canvas class = "coin2" id="coinAnimation2"></canvas> --> */}
-        </div>
-    )
+          <div>
+            <input type="password" name="inputPassword" id="inputPassword" className="form-control" placeholder="Password" required />
+          </div>
+          <div className={ !this.state.showErrorMessage ? 'login-auth-error login-hide-auth-error' : 'login-auth-error' }>
+            Invalid Username or Password
+          </div>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+        <Link to="/"><button></button></Link>
+      </div>
+      )
+}
 }
 
 export default Login;

@@ -9,8 +9,9 @@ import { Provider } from 'react-redux';
 import { Store } from 'redux';
 
 // Import the store function and state
-import configureStore, { IAppState } from './store/Store';
-import { getAllCharacters } from './actions/CharacterActions';
+// import configureStore, { IAppState } from './store/Store';
+import configureStore from './store/Store';
+// import { getAllCharacters } from './actions/CharacterActions';
 
 import './index.css';
 import App from './App';
@@ -32,8 +33,8 @@ const Root: React.SFC<IProps> = props => {
 };
 
 // Generate the store
-const store = configureStore();
-store.dispatch(getAllCharacters());
+// const store = configureStore();
+// store.dispatch(getAllCharacters());
 
 // Render the App
 ReactDOM.render(<Root store={store} />, document.getElementById(

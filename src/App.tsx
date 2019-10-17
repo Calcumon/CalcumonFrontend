@@ -3,29 +3,48 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 
-import Login from './components/Login'
+// Redux connection
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 
-const App: React.FC = () => {
+
+// Components 
+// import SignUp from './components/Signup/index'
+import Login from './components/Login/index'
+
+// this will check authenication
+import { setAuthentication } from './actions/authenication'
+import request from './utils/request';
+
+//This is for authenicated route
+import authenicatedRoute from './highOrderComponents/AuthenicatedRoute'
+
+
+
+export default class App extends React.Component  {
+
+  componentDidMount(){
+    request('/auth/token')
+    .then(response => this.props.setAuthentication(response.data))
+    .catch(err => this.props.setAuthentication(null))
+  }
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          {/* <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/events">
-            <Events />
-          </Route> */}
-        </Switch>
+    <Router>
+        <div>
+          <Switch>
+            <Route exact path ='/login' component={Login}/>
+          </Switch> 
+        </div>
     </Router>
-
-      </header>
-    </div>
   );
 }
+}
 
-export default App;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+    setAuthentication
+  }, dispatch)
+
+export default connect(null, mapDispatchToProps)(App)
