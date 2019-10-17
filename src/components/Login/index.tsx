@@ -27,6 +27,14 @@ class Login extends React.Component<Props, IErrorLoginState> {
         }
     }
 
+    // TODO: integrate in LOGIN component
+    // componentDidMount(){
+    //   request('/auth/token')
+    //   .then(response => this.props.setAuthentication(response.data))
+    //   .catch(err => this.props.setAuthentication(null))
+    // }
+
+
     handleSignIn = (event: React.ChangeEvent<HTMLInputElement>) =>{
         event.preventDefault();
 

@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 
@@ -20,33 +22,45 @@ import request from './utils/request';
 //This is for authenicated route
 import AuthenicatedRoute from './highOrderComponents/AuthenicatedRoute';
 
+import reducers from './reducers';
+const store = createStore(reducers)
 
-
+{/* TODO: Add after login form is moved out of landing page: <Route path ='/login' component={Login}/> */}
 export default class App extends React.Component  {
-
-  componentDidMount(){
-    request('/auth/token')
-    .then(response => this.props.setAuthentication(response.data))
-    .catch(err => this.props.setAuthentication(null))
-  }
+  
+  // Moved to LOGIN route
+  // componentDidMount(){
+  //   request('/auth/token')
+  //   .then(response => this.props.setAuthentication(response.data))
+  //   .catch(err => this.props.setAuthentication(null))
+  // }
 
   render(){
   return (
-    <Router>
-        <div>
-          <Switch>
-            <Route exact path ='/login' component={Login}/>
-            <AuthenticatedRoute path='/Dashboard' component={Dashboard} />
-          </Switch> 
-        </div>
-    </Router>
+    <Provider store={store} >
+      <Router>
+          <div>
+            <Switch>
+              <Route exact path ='/' component={ Login }/>
+              {/* TODO: user={"Add variable from redux store"} */}
+              <AuthenicatedRoute path='/Dashboard' user={ false } component={ Dashboard } />
+            </Switch> 
+          </div>
+      </Router>
+    </Provider>
   );
 }
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    setAuthentication
-  }, dispatch)
+// const mapDispatchToProps = () => {
+//   return {
+//     setAuthentication
+//   }
+//  }
+ 
+// //  dispatch =>
+// //   bindActionCreators({
+// //     setAuthentication
+// //   }, dispatch)
 
-export default connect(null, mapDispatchToProps)(App)
+// export default connect(null, mapDispatchToProps)(App)
