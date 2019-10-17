@@ -1,6 +1,4 @@
-import { IAuthenticate, IUnauthenticate } from "<div className=""/>
-<actions/>
-<authActions></authActions>";
+import { IAuthenticate, IUnauthenticate } from "../actions/authActions";
 import { AUTHENTICATE, UNAUTHENTICATE } from "../constants/constants";
 import { ICurrent } from "../types";
 
