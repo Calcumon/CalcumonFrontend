@@ -25,7 +25,7 @@ interface AUTH_ACTION_TYPE {
 
 type ACTION_TYPE = AUTH_ACTION_TYPE
 
-export const authentication = (state = AUTHENTICATION_INITIAL_STATE, action: AUTH_ACTION_TYPE) : Reducer<AUTH_STATE, ACTION_TYPE> => {
+export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHENTICATION_INITIAL_STATE, action: AUTH_ACTION_TYPE) : AUTH_STATE=> {
   switch(action.type){
     case SET_AUTHENTICATION: 
       const { user, pending } = action.payload
