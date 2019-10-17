@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 // Components 
 // import SignUp from './components/Signup/index'
 import Login from './components/Login/index'
+import Dashboard from './components/landingPage/index'
 
 // this will check authenication
 import { setAuthentication } from './actions/authenication'
@@ -35,7 +36,7 @@ export default class App extends React.Component  {
         <div>
           <Switch>
             <Route exact path ='/login' component={Login}/>
-            <AuthenticatedRoute path='/Dashboard' component={Dasboards} />
+            <AuthenticatedRoute path='/Dashboard' component={Dashboard} />
           </Switch> 
         </div>
     </Router>

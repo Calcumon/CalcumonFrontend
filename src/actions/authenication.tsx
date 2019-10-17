@@ -3,7 +3,11 @@ import { ThunkAction } from 'redux-thunk';
 
 import request from '../utils/request'
 
+
+
 export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
+
+
 
 export const setAuthentication = claim => ({
     type: SET_AUTHENTICATION,

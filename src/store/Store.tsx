@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import authentication  from '../reducers/authentication'
 
 const reducers = combineReducers({
+  levels,
   authentication
 })
 

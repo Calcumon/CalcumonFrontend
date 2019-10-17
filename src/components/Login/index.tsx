@@ -6,21 +6,28 @@ import {Link} from 'react-router-dom'
 
 import { setAuthentication } from '../../actions/authentication'
 
+import request from '../../utils/request'
+
 // TODO: What will be in our LoginInterface?
-// interface LoginInterface {
+interface IErrorLoginState {
+    showErrorMessage: Boolean;
+}
 
-// }
+interface Props{
+    setAuthentication: Function;
+    request: Function
+}
 
-class Login extends React.Component {
+class Login extends React.Component<Props, IErrorLoginState> {
     
-    constructor(){
-        super(props);
+    constructor(props: Props){
+        super(props)
         this.state = { 
-            showErrorMessage: False
+            showErrorMessage: false
         }
     }
 
-    handleSignIn = (event) =>{
+    handleSignIn = (event: React.ChangeEvent<HTMLInputElement>) =>{
         event.preventDefault();
 
         const {login, password} = event.target
