@@ -1,17 +1,11 @@
 import React from 'react';
 
-export interface Props {
+export interface LandingPageProps {
     
 }
+
  
-export interface State {
-    
-}
- 
-class  extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-    }
+class LandingPage extends React.Component<LandingPageProps> {
     render() { 
         return ( <div>
             <h1>hello</h1>
@@ -19,4 +13,4 @@ class  extends React.Component<Props, State> {
     }
 }
  
-export default ;
+export default LandingPage;

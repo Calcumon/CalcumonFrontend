@@ -16,7 +16,7 @@ import Login from './components/Login/index'
 import Dashboard from './components/landingPage/index'
 
 // this will check authenication
-import { setAuthentication } from './actions/authenication'
+import { setAuthentication } from './actions/authentication'
 import request from './utils/request';
 
 //This is for authenicated route

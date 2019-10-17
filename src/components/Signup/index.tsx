@@ -10,7 +10,7 @@ export interface State {
     correctPassword: string;
 }
  
-class  extends React.Component<Props, State> {
+class Signup extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = { 
@@ -27,4 +27,4 @@ class  extends React.Component<Props, State> {
     }
 }
  
-export default ;
+export default Signup;

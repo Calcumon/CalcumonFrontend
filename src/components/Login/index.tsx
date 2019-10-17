@@ -6,8 +6,6 @@ import {Link} from 'react-router-dom'
 
 import { setAuthentication } from '../../actions/authentication'
 
-import request from '../../utils/request'
-
 // TODO: What will be in our LoginInterface?
 interface IErrorLoginState {
     showErrorMessage: Boolean;
@@ -36,23 +34,23 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
 
     handleSignIn = (event: React.ChangeEvent<HTMLInputElement>) =>{
-        event.preventDefault();
+        // event.preventDefault();
 
-        const {login, password} = event.target
+        // const { login, password } = event.target
 
-        request('auth/tokem', {username: login, password})
-        .then((response=> {
-            this.setState({ showErrorMessage: False })
-            localStorage.setItem('token', response.data.token)
-            return request('/auth/token')
-        })
-        .then(response=> {
-            this.props.setAuthentication(response.data)
-            this.props.history.push('/landingPage')
-        })
-        .catch(response => {
-            this.setState({showErrorMessage: False})
-        })
+        // request('auth/tokem', {username: login, password})
+        // .then((response=> {
+        //     this.setState({ showErrorMessage: false })
+        //     localStorage.setItem('token', response.data.token)
+        //     return request('/auth/token')
+        // })
+        // .then(response=> {
+        //     this.props.setAuthentication(response.data)
+        //     this.props.history.push('/landingPage')
+        // })
+        // .catch(response => {
+        //     this.setState({ showErrorMessage: false })
+        // })
     }
 
     render() {
