@@ -5,11 +5,11 @@ import { Route, Redirect, RouteProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ReducersMapObject } from 'redux'
 
-interface IProps {
-    path: string;
-    user: boolean;
-    component: React.ComponentType<any>;
-    pending: boolean;
+export interface IProps {
+  path: string;
+  user: boolean;
+  component: React.ComponentType<any>;
+  pending: boolean;
 }
 
 

@@ -6,19 +6,25 @@ components in the application without passing it explicitly */
 import { Provider } from 'react-redux';
 
 // Store type from Redux
-import { Store } from 'redux';
+import { Store, createStore } from 'redux';
 
 // Import the store function and state
 // import configureStore, { IAppState } from './store/Store';
 import configureStore from './store/Store';
 // import { getAllCharacters } from './actions/CharacterActions';
+import { setAuthentication } from './actions/authentication'
+import indexReducer from './reducers/index'
 
 import './index.css';
 import App from './App';
 
-interface IProps {
-  store: Store<IAppState>;
+const store = createStore<setAuthentication>
+
+interface IStore {
+  store: ;
 }
+
+
 
 /* 
 Create a root component that receives the store via props
