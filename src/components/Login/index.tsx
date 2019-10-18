@@ -9,6 +9,9 @@ import { setAuthentication } from '../../actions/authentication'
 // TODO: What will be in our LoginInterface?
 interface IErrorLoginState {
     showErrorMessage: Boolean;
+    username: string;
+    password: string;
+    error: boolean;
 }
 
 interface Props{
@@ -21,7 +24,10 @@ class Login extends React.Component<Props, IErrorLoginState> {
     constructor(props: Props){
         super(props)
         this.state = { 
-            showErrorMessage: false
+            showErrorMessage: false,
+            username: '',
+            password: '',
+            error: false,
         }
     }
 
@@ -33,7 +39,29 @@ class Login extends React.Component<Props, IErrorLoginState> {
     // }
 
 
-    handleSignIn = (event: React.ChangeEvent<HTMLInputElement>) =>{
+    handleSignIn = () =>{
+
+      fetch("/auth", {
+        method: "post",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        })
+      }).then((response) => response.json())
+      .then((data) => {
+          // TODO: find what data backend sends us
+          if (!data.status) {
+            this.setState({ error : true });
+          } else {
+            // TODO: Update redux to call authenticate action as true
+          }
+      })
+      .catch((err) => {
+          console.log(err)
+          this.setState({ error : true });
+      })
+    
         // event.preventDefault();
 
         // const { login, password } = event.target
@@ -54,9 +82,11 @@ class Login extends React.Component<Props, IErrorLoginState> {
     }
 
     render() {
+      // TODO: If redux authenticated is true: redirect to user dashboard
+
     return (
-              <div className="login">
-        <form onSubmit={this.handleSignIn} className="login-form">
+        <div className="login">
+        {/* <form onSubmit={this.handleSignIn} className="login-form">
           <div>
             <h1>Log in</h1>
           </div>
@@ -73,7 +103,24 @@ class Login extends React.Component<Props, IErrorLoginState> {
           </div>
           <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
-        <Link to="/"><button></button></Link>
+        <Link to="/"><button></button></Link> */}
+        <input type="string" 
+               name="username" 
+               id="inputEmail" 
+               placeholder="Username" 
+               onChange={(e) => this.setState({ username : e.target.value})}
+               required autoFocus />
+        <input type="password" 
+               name="inputPassword" 
+               id="inputPassword" 
+               className="form-control" 
+               placeholder="Password" 
+               onChange={(e) => this.setState({ password : e.target.value})}
+               required />
+        <button className="btn btn-lg btn-primary btn-block" type="submit" onSubmit={() => {
+          // TODO: validate data function
+          this.handleSignIn()
+        }}>Sign in</button>
       </div>
       )
 }

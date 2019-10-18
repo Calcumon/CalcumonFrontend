@@ -27,10 +27,10 @@ export const setAuthentication = ( claim : AUTH_STATE )=> ({
   })
 
 
-export const getUser = (id) => {
-    return dispatch => {
-        request('/auth/token')
-        .then(response => this.props.setAuthentication(response.data))
-        .catch(err => this.props.setAuthentication(null))
-        }
-}
+// export const getUser = (id) => {
+//     return dispatch => {
+//         request('/auth/token')
+//         .then(response => this.props.setAuthentication(response.data))
+//         .catch(err => this.props.setAuthentication(null))
+//         }
+// }

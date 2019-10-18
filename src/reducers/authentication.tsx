@@ -13,7 +13,7 @@ const AUTHENTICATION_INITIAL_STATE : AUTH_STATE = {
     pending: true,
 }
 
-export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHENTICATION_INITIAL_STATE, action: AUTH_ACTION_TYPE) : AUTH_STATE=> {
+export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHENTICATION_INITIAL_STATE, action: AUTH_ACTION_TYPE) : AUTH_STATE => {
   switch(action.type){
     case SET_AUTHENTICATION: 
       const { user, pending } = action.payload
