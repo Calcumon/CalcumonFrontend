@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {Link} from 'react-router-dom'
 
+import './styles/login.css';
 
 import { setAuthentication } from '../../actions/authentication'
 
