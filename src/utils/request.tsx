@@ -9,7 +9,7 @@ export interface IRequestBody {
     password: string;
 }
 
-
+//request is for user login
 const request = (path= '', method = 'get', body = null) => {
 
   const token = localStorage.getItem('token')
