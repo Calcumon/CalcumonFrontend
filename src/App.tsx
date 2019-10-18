@@ -27,13 +27,6 @@ const store = createStore(reducers)
 
 {/* TODO: Add after login form is moved out of landing page: <Route path ='/login' component={Login}/> */}
 export default class App extends React.Component  {
-  
-  // Moved to LOGIN route
-  // componentDidMount(){
-  //   request('/auth/token')
-  //   .then(response => this.props.setAuthentication(response.data))
-  //   .catch(err => this.props.setAuthentication(null))
-  // }
 
   render(){
   return (
@@ -51,16 +44,3 @@ export default class App extends React.Component  {
   );
 }
 }
-
-// const mapDispatchToProps = () => {
-//   return {
-//     setAuthentication
-//   }
-//  }
- 
-// //  dispatch =>
-// //   bindActionCreators({
-// //     setAuthentication
-// //   }, dispatch)
-
-// export default connect(null, mapDispatchToProps)(App)
