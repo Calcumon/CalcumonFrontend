@@ -26,7 +26,7 @@ export const setAuthentication = ( claim : AUTH_STATE )=> ({
     payload: claim,
   })
 
-
+//#Setup getUser login and signUpUSer actions
 // export const getUser = () => {
 //     return Dispatch => {
 //         // request('/auth/token')

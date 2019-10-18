@@ -40,7 +40,7 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
 
     handleSignIn = () =>{
-
+      //#TODO update url to meet api standard 
       fetch("/auth", {
         method: "post",
         headers: {'Content-Type': 'application/json'},

@@ -25,4 +25,6 @@ const request = (path= '', method = 'get', body = null) => {
   })
 }
 
+//#Build a addUserRequest function
+
 export default request
