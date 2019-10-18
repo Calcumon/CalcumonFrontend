@@ -2,10 +2,10 @@ import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 // import logger from 'redux-logger';
 
-import authentication  from '../reducers/authentication'
+import { authentication }  from '../reducers/authentication'
 
 const reducers = combineReducers({
-  levels,
+  // levels,
   authentication
 })
 

@@ -5,12 +5,12 @@ export interface IRequest {
 }
 
 export interface IRequestBody { 
-    login: string;
+    username: string;
     password: string;
 }
 
 
-const request = (path, method = 'get', body = null) => {
+const request = (path= '', method = 'get', body = null) => {
 
   const token = localStorage.getItem('token')
 
@@ -21,7 +21,7 @@ const request = (path, method = 'get', body = null) => {
       'Accept': 'application/json',
       'Authorization': token ? `Bearer ${token}` : ''
     },
-    data: JSON.stringify(body)
+    body: JSON.stringify(body)
   })
 }
 
