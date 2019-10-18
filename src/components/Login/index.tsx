@@ -62,23 +62,6 @@ class Login extends React.Component<Props, IErrorLoginState> {
           this.setState({ error : true });
       })
     
-        // event.preventDefault();
-
-        // const { login, password } = event.target
-
-        // request('auth/tokem', {username: login, password})
-        // .then((response=> {
-        //     this.setState({ showErrorMessage: false })
-        //     localStorage.setItem('token', response.data.token)
-        //     return request('/auth/token')
-        // })
-        // .then(response=> {
-        //     this.props.setAuthentication(response.data)
-        //     this.props.history.push('/landingPage')
-        // })
-        // .catch(response => {
-        //     this.setState({ showErrorMessage: false })
-        // })
     }
 
     render() {
@@ -86,24 +69,6 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
     return (
         <div className="login">
-        {/* <form onSubmit={this.handleSignIn} className="login-form">
-          <div>
-            <h1>Log in</h1>
-          </div>
-
-          <div>
-            <input type="text" name="inputEmail" id="inputEmail" placeholder="Email address" required autoFocus />
-          </div>
-
-          <div>
-            <input type="password" name="inputPassword" id="inputPassword" className="form-control" placeholder="Password" required />
-          </div>
-          <div className={ !this.state.showErrorMessage ? 'login-auth-error login-hide-auth-error' : 'login-auth-error' }>
-            Invalid Username or Password
-          </div>
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
-        <Link to="/"><button></button></Link> */}
         <input type="string" 
                name="username" 
                id="inputEmail" 

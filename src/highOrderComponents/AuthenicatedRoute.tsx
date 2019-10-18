@@ -14,7 +14,6 @@ export interface IProps {
 
 
 class AuthenticatedRoute extends Component<IProps, RouteProps> {
-// const AuthenticatedRoute : React.FC<IProps, RouteProps> = props => {
   render() {
     const { pending, user, path,  component } = this.props
     // TODO: Use this?
