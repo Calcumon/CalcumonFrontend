@@ -1,4 +1,61 @@
 body {
-    background-color: #f6f8ff;
+    background-color: #F1FFCC;
     background-image: url('../../../assets/Banners/Calcumon-Banner1.png');
+}
+
+.inputContainer{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+    display: grid;
+    grid-auto-rows: auto auto auto;
+}
+
+#inputUsername{
+    border: none;
+    border-radius: 7px;
+    background-color: #C7C0F4;
+    margin: 10px;
+    text-align: center;
+    box-shadow: none;
+    font-size: 20px;
+}
+
+/* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
+#inputUsername:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
+}
+
+
+
+#inputPassword{
+    -webkit-text-fill-color: #C7C0F4 !important;
+    border: none;
+    border-radius: 7px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: none;
+    background-color: #C7C0F4;
+    font-size: 20px;
+}
+/* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
+#inputPassword:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
+    -webkit-text-fill-color: black
+}
+
+#submitButton {
+    margin-top: 25px;
+    margin-left: 49px;
+    padding-left: -20px;
+    padding-right: -20px;
+    width: 200px;
+    background-color: #D6F091;
+    border: none;
+    border-radius: 7px;
+    font-size: 20px;
 }

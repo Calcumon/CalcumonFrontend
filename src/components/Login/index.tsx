@@ -69,11 +69,11 @@ class Login extends React.Component<Props, IErrorLoginState> {
     render() {
       // TODO: If redux authenticated is true: redirect to user dashboard
 
-    return (
-        <div className="login">
+    return (<div>
+        <div className="inputContainer">
         <input type="string" 
                name="username" 
-               id="inputEmail" 
+               id="inputUsername" 
                placeholder="Username" 
                onChange={(e) => this.setState({ username : e.target.value})}
                required autoFocus />
@@ -84,10 +84,11 @@ class Login extends React.Component<Props, IErrorLoginState> {
                placeholder="Password" 
                onChange={(e) => this.setState({ password : e.target.value})}
                required />
-        <button className="btn btn-lg btn-primary btn-block" type="submit" onSubmit={() => {
+        <button id='submitButton' type="submit" onSubmit={() => {
           // TODO: validate data function
           this.handleSignIn()
-        }}>Sign in</button>
+        }}>Sign In</button>
+      </div>
       </div>
       )
 }
