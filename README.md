@@ -1,3 +1,11 @@
 Buit With React, Redux, and Typescript, enzyme, 
 
-shallow or mount
+## How to Deployee Locally
+
+```
+npm install
+```
+or
+```
+npm i
+```
