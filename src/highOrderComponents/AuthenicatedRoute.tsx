@@ -1,40 +1,48 @@
 
-import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Route, Redirect, RouteProps } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { Class } from '@babel/types'
+import { ReducersMapObject } from 'redux'
 
 interface IProps {
     path: string;
     user: boolean;
-    component: Function;
+    component: React.ComponentType<any>;
+    pending: boolean;
 }
 
 
-const AuthenticatedRoute : React.FC<IProps> = props => {
-    const {
-    authentication: {
+class AuthenticatedRoute extends Component<IProps, RouteProps> {
+// const AuthenticatedRoute : React.FC<IProps, RouteProps> = props => {
+  render() {
+    const { pending, user, path,  component } = this.props
+    // TODO: Use this?
+    const authentication = {
       pending,
       user
-    },
-    path,
-    component
-  } = props
-
-  if(pending && !user){
-    return <div>Loading...</div>
+    }
+  
+    if(pending && !user){
+      return <div>Loading...</div>
+    }
+    else if (user) {
+      // TODO: Can't use Route
+      return <Route path={path} render={ component => (
+        <>
+          <Component component={component} />
+        </>
+      )}/> 
+    }
+    else {
+      return <Redirect to='/login' />
+    }
   }
-  else if(user) {
-    return <Route path={path} component={component} /> 
-  }
-  else {
-    return <Redirect to='/login' />
-  }
+  
 }
 
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = (state: ReducersMapObject) => ({ 
   authentication: state.authentication
 })
 
