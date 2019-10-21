@@ -36,7 +36,7 @@ export default class App extends React.Component  {
           <div>
             <Switch>
               <Route exact path ='/' component={ Login }/>
-              <Route path = '/signup' component = {Signup}/>
+              <Route path = '/signup' component = { Signup }/>
               {/* TODO: user={"Add variable from redux store"} */}
               <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } />
             </Switch> 

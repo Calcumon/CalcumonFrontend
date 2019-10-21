@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
 
+import { Link } from 'react-router-dom';
+
 import './styles/login.css';
 
 import { setAuthentication } from '../../actions/authentication'
@@ -90,6 +92,10 @@ class Login extends React.Component<Props, IErrorLoginState> {
             // TODO: validate data function
             this.handleSignIn()
           }}>Sign In</button>
+          <div id='register'>
+              <p>New Here?</p>
+              <Link to='/signup'><button id='submitButton'>Sign Up</button></Link>
+          </div>
       </div>
       </>
       )
