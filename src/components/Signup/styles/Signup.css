@@ -1,9 +1,12 @@
 body {
     background-color: #F1FFCC;
+
+}
+.header{
+    background-image: url('../../../assets/Banners/Calcumon-Banner1.png');
 }
 
-
-.inputContainer{
+.signUpContainer{
     position: absolute;
     width: 300px;
     height: 200px;
@@ -13,13 +16,6 @@ body {
     margin: -100px 0 0 -150px;
     display: flex;
     flex-direction: column;
-}
-
-/* We need an svg here. This image will cause screen sizing issues */
-.header{
-    padding-top: 20px;
-    height: 400px;
-    width: 400px;
 }
 
 #inputUsername{
@@ -49,6 +45,7 @@ body {
     box-shadow: none;
     background-color: #C7C0F4;
     font-size: 20px;
+    color: #383838
 }
 /* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
 #inputPassword:-webkit-autofill {
@@ -66,4 +63,5 @@ body {
     border: none;
     border-radius: 7px;
     font-size: 20px;
+    color: #383838
 }

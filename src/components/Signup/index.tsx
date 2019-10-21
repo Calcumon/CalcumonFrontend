@@ -1,6 +1,8 @@
 import React from 'react';
 import { bool } from 'prop-types';
 import { booleanLiteral } from '@babel/types';
+import {Link} from 'react-router-dom'
+import './styles/Signup.css'
 export interface Props {
     signUpAuthenication: Function;
 }
@@ -51,25 +53,33 @@ class Signup extends React.Component<Props, State> {
       }
 
     render() { 
-        return ( <div className="login">
-        <input type="string" 
-               name="username" 
-               id="inputEmail" 
-               placeholder="Username" 
-               onChange={(e) => this.setState({ username : e.target.value})}
-               required autoFocus />
-        <input type="password" 
-               name="inputPassword" 
-               id="inputPassword" 
-               className="form-control" 
-               placeholder="Password" 
-               onChange={(e) => this.setState({ password : e.target.value})}
-               required />
-        <button className="btn btn-lg btn-primary btn-block" type="submit" onSubmit={() => {
-          // TODO: validate data function
-          this.handleSignIn()
-        }}>Sign in</button>
-      </div> );
+        return ( 
+        <div>
+            <div className="singUpContainer">
+              <input type="string" 
+                    name="username" 
+                    id="inputUsername" 
+                    placeholder="Username" 
+                    onChange={(e) => this.setState({ username : e.target.value})}
+                    required autoFocus />
+              <input type="password" 
+                    name="inputPassword" 
+                    id="inputPassword" 
+                    className="form-control" 
+                    placeholder="Password" 
+                    onChange={(e) => this.setState({ password : e.target.value})}
+                    required />
+              <button id="submitButton" type="submit" onSubmit={() => {
+                // TODO: validate data function
+                this.handleSignIn()
+              }}>REGISTER</button>
+            <div id='register'>
+              <p>Already Registered?</p>
+              <h5>LOGIN</h5>
+            </div>
+          </div>
+      </div>
+       );
     }
 }
  

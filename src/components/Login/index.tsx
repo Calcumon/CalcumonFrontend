@@ -2,7 +2,7 @@ import React from 'react';
 import { request } from 'http';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {Link} from 'react-router-dom'
+import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
 
 import './styles/login.css';
 
@@ -69,27 +69,29 @@ class Login extends React.Component<Props, IErrorLoginState> {
     render() {
       // TODO: If redux authenticated is true: redirect to user dashboard
 
-    return (<div>
+    return (<>
+        
         <div className="inputContainer">
-        <input type="string" 
-               name="username" 
-               id="inputUsername" 
-               placeholder="Username" 
-               onChange={(e) => this.setState({ username : e.target.value})}
-               required autoFocus />
-        <input type="password" 
-               name="inputPassword" 
-               id="inputPassword" 
-               className="form-control" 
-               placeholder="Password" 
-               onChange={(e) => this.setState({ password : e.target.value})}
-               required />
-        <button id='submitButton' type="submit" onSubmit={() => {
-          // TODO: validate data function
-          this.handleSignIn()
-        }}>Sign In</button>
+          <img src={Banner1} className='header'/>
+          <input type="string" 
+                name="username" 
+                id="inputUsername" 
+                placeholder="Username" 
+                onChange={(e) => this.setState({ username : e.target.value})}
+                required autoFocus />
+          <input type="password" 
+                name="inputPassword" 
+                id="inputPassword" 
+                className="form-control" 
+                placeholder="Password" 
+                onChange={(e) => this.setState({ password : e.target.value})}
+                required />
+          <button id='submitButton' type="submit" onSubmit={() => {
+            // TODO: validate data function
+            this.handleSignIn()
+          }}>Sign In</button>
       </div>
-      </div>
+      </>
       )
 }
 }
