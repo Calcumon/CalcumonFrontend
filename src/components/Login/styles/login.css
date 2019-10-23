@@ -1,5 +1,5 @@
 body {
-    background-color: #F1FFCC;
+  background-color: #F1FFCC;
 }
 
 .inputContainer{
@@ -14,16 +14,9 @@ body {
   flex-direction: column;
 }
 
-/* XXX We need an svg here. This image will cause screen sizing issues */
-/* ^^^This comment is invalid. 
-  SVG would be nice, but the sizing issues came from another source. 
-  Setting both a constant width and constant height on an image
-  forces it to resize to that without maintaining its aspect ratio.
-  Commenting out `height: 400px` fixes the issue.
-*/
+/* Waiting for SVG */
 .header {
   padding-top: 20px;
-  /* height: 400px; */
   width: 400px;
 }
 
@@ -38,15 +31,16 @@ body {
   color: #383838
 }
 
+
 /* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
-#inputUsername:-webkit-autofill {
+#inputPassword:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
   -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
+  color: #383838;
+  -webkit-text-fill-color: #383838;
 }
 
-
-
 #inputPassword{
-  -webkit-text-fill-color: #C7C0F4 !important;
   border: none;
   border-radius: 7px;
   margin: 10px;
@@ -54,10 +48,7 @@ body {
   box-shadow: none;
   background-color: #C7C0F4;
   font-size: 20px;
-}
-/* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
-#inputPassword:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
+  color: #383838;
 }
 
 #submitButton {
@@ -70,4 +61,5 @@ body {
   border: none;
   border-radius: 7px;
   font-size: 20px;
+  color: #383838
 }
