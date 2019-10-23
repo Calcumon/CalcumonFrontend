@@ -45,8 +45,8 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
   handleSignIn = () =>{
   //#TODO update url to meet api standard
-  fetch("/auth", {
-    method: "post",
+  fetch('/auth', {
+    method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
     username: this.state.username,
@@ -56,13 +56,13 @@ class Login extends React.Component<Props, IErrorLoginState> {
   .then((data) => {
     // TODO: find what data backend sends us
     if (!data.status) {
-      this.setState({ error : true });
+      this.setState({ error: true });
     } else {
       // TODO: Update redux to call authenticate action as true
     }
   }).catch((err) => {
     console.log(err)
-    this.setState({ error : true });
+    this.setState({ error: true });
   })
 
   }
@@ -72,30 +72,54 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
     return (
     <>
-      <img src={Banner1} className='header'/>
-      <div className="inputContainer">
-      <input type="string"
-        name="USERNAME"
-        id="inputUsername"
-        placeholder="USERNAME"
-        onChange={(e) => this.setState({ username : e.target.value})}
-        required autoFocus />
-      <input type="password"
-        name="inputPassword"
-        id="inputPassword"
-        className="form-control"
-        placeholder="PASSWORD"
-        onChange={(e) => this.setState({ password : e.target.value})}
-        required />
-      <button id='submitButton' type="submit" onSubmit={() => {
-        // TODO: validate data function
-        this.handleSignIn()
-      }}>Sign In</button>
-        <div id='register'>
-          <p>New Here?</p>
-          <Link to='/signup'><button id='submitButton'>Sign Up</button></Link>
-        </div>
+      <img
+        src={Banner1}
+        className='splash-logo'
+      />
+
+      <div className='inputContainer'>
+        <input
+          type='string'
+          name='USERNAME'
+          id='inputUsername'
+          placeholder='USERNAME'
+          onChange={(e) => {
+            this.setState({ username: e.target.value})
+          }}
+          required
+          autoFocus
+        />
+
+        <input
+          type='password'
+          name='inputPassword'
+          id='inputPassword'
+          className='form-control'
+          placeholder='PASSWORD'
+          onChange={(e) => {
+            this.setState({ password: e.target.value})
+          }}
+          required
+        />
       </div>
+
+      <button
+        id='submitButton'
+        type='submit'
+        onSubmit={() => {
+          // TODO: validate data function
+          this.handleSignIn()
+      }}>
+        Register
+      </button>
+
+      <p>already registered?</p>
+      <Link to='/signup'>
+        <button id='submitButton'>
+          Sign Up
+        </button>
+      </Link>
+
     </>
     )
   }

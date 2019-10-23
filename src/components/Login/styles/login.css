@@ -15,9 +15,11 @@ body {
 }
 
 /* Waiting for SVG */
-.header {
-  padding-top: 20px;
-  width: 400px;
+.splash-logo {
+  display: block;
+  margin: 15vh auto 0 auto;
+  width: 300px;
+  min-width: 65vw;
 }
 
 #inputUsername{
@@ -30,7 +32,6 @@ body {
   font-size: 20px;
   color: #383838
 }
-
 
 /* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
 #inputPassword:-webkit-autofill {
