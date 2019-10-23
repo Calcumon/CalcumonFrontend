@@ -21,7 +21,7 @@ class AuthenticatedRoute extends Component<IProps, RouteProps> {
       pending,
       user
     }
-  
+
     if(pending && !user){
       return <div>Loading...</div>
     }
@@ -31,17 +31,17 @@ class AuthenticatedRoute extends Component<IProps, RouteProps> {
         <>
           <Component component={component} />
         </>
-      )}/> 
+      )}/>
     }
     else {
       return <Redirect to='/login' />
     }
   }
-  
+
 }
 
 
-const mapStateToProps = (state: ReducersMapObject) => ({ 
+const mapStateToProps = (state: ReducersMapObject) => ({
   authentication: state.authentication
 })
 

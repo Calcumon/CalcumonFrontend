@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
 
-// Components 
+// Components
 // import SignUp from './components/Signup/index'
 import Login from './components/Login/index'
 import Dashboard from './components/landingPage/index'
@@ -30,19 +30,19 @@ const store = createStore(reducers)
 export default class App extends React.Component  {
 
   render(){
-  return (
-    <Provider store={store} >
-      <Router>
-          <div>
-            <Switch>
-              <Route exact path ='/' component={ Login }/>
-              <Route path = '/signup' component = { Signup }/>
-              {/* TODO: user={"Add variable from redux store"} */}
-              <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } />
-            </Switch> 
-          </div>
-      </Router>
-    </Provider>
-  );
-}
+    return (
+      <Provider store={store} >
+        <Router>
+            <div>
+              <Switch>
+                <Route exact path ='/' component={ Login }/>
+                <Route path = '/signup' component = { Signup }/>
+                {/* TODO: user={"Add variable from redux store"} */}
+                <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } />
+              </Switch>
+            </div>
+        </Router>
+      </Provider>
+    );
+  }
 }

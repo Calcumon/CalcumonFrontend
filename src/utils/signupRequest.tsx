@@ -1,4 +1,4 @@
-export interface IRequestBody { 
+export interface IRequestBody {
     email?: string;
     username: string;
     password: string;

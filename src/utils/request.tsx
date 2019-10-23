@@ -4,7 +4,7 @@ export interface IRequest {
     method: string;
 }
 
-export interface IRequestBody { 
+export interface IRequestBody {
     username: string;
     password: string;
 }
@@ -13,7 +13,7 @@ export interface IRequestBody {
 const request = (path= '', method = 'get', body = null) => {
 
   const token = localStorage.getItem('token')
-  
+
   return fetch(`${process.env.REACT_APP_BACKEND}${path}`, {
     method: method,
     headers: {

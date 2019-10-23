@@ -6,7 +6,7 @@ import './styles/Signup.css'
 export interface Props {
     signUpAuthenication: Function;
 }
- 
+
 export interface State {
     username: string;
     email?: string;
@@ -14,11 +14,11 @@ export interface State {
     verifiedPassword: string;
     error: boolean;
 }
- 
+
 class Signup extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = { 
+        this.state = {
             username: '',
             email: "",
             password: '',
@@ -28,33 +28,33 @@ class Signup extends React.Component<Props, State> {
     }
 
     handleSignIn = () =>{
-        //#TODO update url to meet api standard 
-        
+        //#TODO update url to meet api standard
+
         this.props.signUpAuthenication({username:this.state.username,email:this.state.email,password:this.state.password})
       }
 
-    render() { 
-        return ( 
+    render() {
+        return (
         <div>
             <div className="singUpContainer">
-              <input type="string" 
-                    name="username" 
-                    id="inputUsername" 
-                    placeholder="Username" 
+              <input type="string"
+                    name="username"
+                    id="inputUsername"
+                    placeholder="Username"
                     onChange={(e) => this.setState({ username : e.target.value})}
                     required autoFocus />
-              <input type="password" 
-                    name="inputPassword" 
-                    id="inputPassword" 
-                    className="form-control" 
-                    placeholder="Password" 
+              <input type="password"
+                    name="inputPassword"
+                    id="inputPassword"
+                    className="form-control"
+                    placeholder="Password"
                     onChange={(e) => this.setState({ password : e.target.value})}
                     required />
-              <input type="password" 
-                    name="inputPassword" 
-                    id="inputPassword" 
-                    className="form-control" 
-                    placeholder="Verify Password" 
+              <input type="password"
+                    name="inputPassword"
+                    id="inputPassword"
+                    className="form-control"
+                    placeholder="Verify Password"
                     onChange={(e) => this.setState({ verifiedPassword : e.target.value})}
                     required />
               <button id="submitButton" type="submit" onSubmit={() => {
@@ -70,5 +70,5 @@ class Signup extends React.Component<Props, State> {
        );
     }
 }
- 
+
 export default Signup;
