@@ -71,21 +71,21 @@ class Login extends React.Component<Props, IErrorLoginState> {
     render() {
       // TODO: If redux authenticated is true: redirect to user dashboard
 
-    return (<>
-        
+    return (
+    <>    
+        <img src={Banner1} className='header'/>
         <div className="inputContainer">
-          <img src={Banner1} className='header'/>
           <input type="string" 
-                name="username" 
+                name="USERNAME" 
                 id="inputUsername" 
-                placeholder="Username" 
+                placeholder="USERNAME" 
                 onChange={(e) => this.setState({ username : e.target.value})}
                 required autoFocus />
           <input type="password" 
                 name="inputPassword" 
                 id="inputPassword" 
                 className="form-control" 
-                placeholder="Password" 
+                placeholder="PASSWORD" 
                 onChange={(e) => this.setState({ password : e.target.value})}
                 required />
           <button id='submitButton' type="submit" onSubmit={() => {
@@ -96,7 +96,7 @@ class Login extends React.Component<Props, IErrorLoginState> {
               <p>New Here?</p>
               <Link to='/signup'><button id='submitButton'>Sign Up</button></Link>
           </div>
-      </div>
+        </div>
       </>
       )
 }

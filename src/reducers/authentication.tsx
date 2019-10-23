@@ -18,6 +18,8 @@ export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHEN
     case SET_AUTHENTICATION: 
       const { user, pending } = action.payload
       return { user, pending }
+    // case login:
+      // const { username, }
     default:
       return state
   }

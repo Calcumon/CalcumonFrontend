@@ -3,7 +3,9 @@ body {
 
 }
 .header{
-    background-image: url('../../../assets/Banners/Calcumon-Banner1.png');
+    padding-top: 20px;
+    height: 400px;
+    width: 400px;
 }
 
 .signUpContainer{

@@ -2,7 +2,7 @@ import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import request from '../utils/request'
-
+import signUpRequest from '../utils/signupRequest'
 
 
 export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
@@ -33,4 +33,20 @@ export const setAuthentication = ( claim : AUTH_STATE )=> ({
 //         // .then(response => this.props.setAuthentication(response.data))
 //         // .catch(err => this.props.setAuthentication(null))
 //         }
+// }
+
+// #setup login actions
+// export const signIn = (payload) => {
+//   return {
+//     type: signIn,
+//     payload
+//   }
+// }
+
+// #Setup SignUp actions
+// export const signUp = (payload) => {
+//     return {
+//       type: signUp,
+//       payload
+//     }
 // }

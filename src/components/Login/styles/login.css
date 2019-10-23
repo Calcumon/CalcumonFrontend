@@ -53,7 +53,6 @@ body {
 /* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
 #inputPassword:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
-    -webkit-text-fill-color: black
 }
 
 #submitButton {
