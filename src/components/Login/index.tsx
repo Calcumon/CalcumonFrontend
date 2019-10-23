@@ -25,7 +25,7 @@ interface Props{
 
 class Login extends React.Component<Props, IErrorLoginState> {
 
-  constructor(props: Props){
+  constructor(props: Props) {
     super(props)
     this.state = {
       showErrorMessage: false,
@@ -91,10 +91,10 @@ class Login extends React.Component<Props, IErrorLoginState> {
         // TODO: validate data function
         this.handleSignIn()
       }}>Sign In</button>
-      <div id='register'>
-        <p>New Here?</p>
-        <Link to='/signup'><button id='submitButton'>Sign Up</button></Link>
-      </div>
+        <div id='register'>
+          <p>New Here?</p>
+          <Link to='/signup'><button id='submitButton'>Sign Up</button></Link>
+        </div>
       </div>
     </>
     )
