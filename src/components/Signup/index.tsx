@@ -27,7 +27,7 @@ class Signup extends React.Component<Props, State> {
         };
     }
 
-    handleSignIn = () =>{
+    handleSignUp = () =>{
         //#TODO update url to meet api standard
 
         fetch(`https://calcumon-user-api.herokuapp.com/user/`,{
@@ -36,7 +36,10 @@ class Signup extends React.Component<Props, State> {
               'accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email: this.state.password, username: this.state.username, password: this.state.password})
+            body: JSON.stringify({email: this.state.email, username: this.state.username, password: this.state.password})
+          })
+          .then((response)=>{
+            console.log(response)
           })
       }
 
@@ -73,7 +76,7 @@ class Signup extends React.Component<Props, State> {
                     required /> */}
               <button id="submitButton" type="submit" onClick={() => {
                 // TODO: validate data function
-                this.handleSignIn()
+                this.handleSignUp()
               }}>REGISTER</button>
             <div id='register'>
               <p>Already Registered?</p>
