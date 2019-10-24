@@ -30,14 +30,27 @@ class Signup extends React.Component<Props, State> {
     handleSignIn = () =>{
         //#TODO update url to meet api standard
 
-        this.props.signUpAuthenication({username:this.state.username,email:this.state.email,password:this.state.password})
-        .then(Response=>Response.data)
+        fetch(`https://calcumon-user-api.herokuapp.com/user/`,{
+          method: 'post',
+            headers: {
+              'accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email: this.state.password, username: this.state.username, password: this.state.password})
+          })
       }
 
     render() {
         return (
         <div>
             <div className="singUpContainer">
+            <input type="password"
+                    name="inputPassword"
+                    id="inputPassword"
+                    className="form-control"
+                    placeholder="email"
+                    onChange={(e) => this.setState({ email : e.target.value})}
+                    required />
               <input type="string"
                     name="username"
                     id="inputUsername"
@@ -51,14 +64,14 @@ class Signup extends React.Component<Props, State> {
                     placeholder="Password"
                     onChange={(e) => this.setState({ password : e.target.value})}
                     required />
-              <input type="password"
+              {/* <input type="password"
                     name="inputPassword"
                     id="inputPassword"
                     className="form-control"
                     placeholder="Verify Password"
                     onChange={(e) => this.setState({ verifiedPassword : e.target.value})}
-                    required />
-              <button id="submitButton" type="submit" onSubmit={() => {
+                    required /> */}
+              <button id="submitButton" type="submit" onClick={() => {
                 // TODO: validate data function
                 this.handleSignIn()
               }}>REGISTER</button>

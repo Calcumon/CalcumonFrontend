@@ -1,5 +1,4 @@
 import React from 'react';
-import { request } from 'http';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
@@ -10,7 +9,8 @@ import { Link } from 'react-router-dom';
 import './styles/login.css';
 
 import { setAuthentication } from '../../actions/authentication'
-import { object } from 'prop-types';
+import { async } from 'q';
+
 
 // TODO: What will be in our LoginInterface?
 interface IErrorLoginState {
@@ -56,26 +56,28 @@ class Login extends React.Component<Props, IErrorLoginState> {
   // }
 
 
-  handleSignIn = () =>{
+  handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
-    
+    console.log("I am here")
     const body: requestBody = {username: this.state.username, password: this.state.password}
 
-    return fetch(`${process.env.REACT_APP_BACKEND}auth/login`, {
+    return fetch(`https://calcumon-user-api.herokuapp.com/auth/login`, {
     method: 'post',
     headers: {
       'accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
-  }).then((response: responseBody)=> void { 
+  })
+  .then((response)=>{
       console.log(response)
+
     })
+    .catch(err=>{console.log(err)})
   }
 
   render() {
     // TODO: If redux authenticated is true: redirect to user dashboard
-
     return (
     <>
       <img
@@ -112,14 +114,15 @@ class Login extends React.Component<Props, IErrorLoginState> {
       <button
         id='submitButton'
         type='submit'
-        onSubmit={() => {
+        onClick={() => {
+          
           // TODO: validate data function
           this.handleSignIn()
       }}>
-        Register
+        Sign In
       </button>
 
-      <p>already registered?</p>
+      <p>New Here?</p>
       <Link to='/signup'>
         <button id='submitButton'>
           Sign Up
