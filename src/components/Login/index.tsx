@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import './styles/login.css';
 
 import { setAuthentication } from '../../actions/authentication'
+import { object } from 'prop-types';
 
 // TODO: What will be in our LoginInterface?
 interface IErrorLoginState {
@@ -22,6 +23,17 @@ interface IErrorLoginState {
 interface Props{
   setAuthentication: Function;
   request: Function
+}
+
+interface requestBody {
+  username: string;
+  password: string;
+}
+
+interface responseBody {
+  status: string;
+  message: string;
+  Authorization: string;
 }
 
 class Login extends React.Component<Props, IErrorLoginState> {
@@ -47,14 +59,16 @@ class Login extends React.Component<Props, IErrorLoginState> {
   handleSignIn = () =>{
     // this.props.logIn({username: this.state.username, password: this.state.password})
     
-    return fetch(`${process.env.REACT_APP_BACKEND}auth/login`,
+    const body: requestBody = {username: this.state.username, password: this.state.password}
+
+    return fetch(`${process.env.REACT_APP_BACKEND}auth/login`, {
     method: 'post',
     headers: {
-      'Content-Type': 'application/json',
-      'accept': 'application/json'
+      'accept': 'application/json',
+      'Content-Type': 'application/json'
     },
-    {username: this.state.username, password: this.state.password})
-    .then((response)=>{
+    body: JSON.stringify(body)
+  }).then((response: responseBody)=> void { 
       console.log(response)
     })
   }
