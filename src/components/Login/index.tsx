@@ -26,7 +26,7 @@ interface Props{
 
 class Login extends React.Component<Props, IErrorLoginState> {
 
-  constructor(props: Props){
+  constructor(props: Props) {
     super(props)
     this.state = {
       showErrorMessage: false,
@@ -64,30 +64,54 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
     return (
     <>
-      <img src={Banner1} className='header'/>
-      <div className="inputContainer">
-      <input type="string"
-        name="USERNAME"
-        id="inputUsername"
-        placeholder="USERNAME"
-        onChange={(e) => this.setState({ username : e.target.value})}
-        required autoFocus />
-      <input type="password"
-        name="inputPassword"
-        id="inputPassword"
-        className="form-control"
-        placeholder="PASSWORD"
-        onChange={(e) => this.setState({ password : e.target.value})}
-        required />
-      <button id='submitButton' type="submit" onSubmit={() => {
-        // TODO: validate data function
-        this.handleSignIn()
-      }}>Sign In</button>
-      <div id='register'>
-        <p>New Here?</p>
-        <Link to='/signup'><button id='submitButton'>Sign Up</button></Link>
+      <img
+        src={Banner1}
+        className='splash-logo'
+      />
+
+      <div className='inputContainer'>
+        <input
+          type='string'
+          name='USERNAME'
+          id='inputUsername'
+          placeholder='USERNAME'
+          onChange={(e) => {
+            this.setState({ username: e.target.value})
+          }}
+          required
+          autoFocus
+        />
+
+        <input
+          type='password'
+          name='inputPassword'
+          id='inputPassword'
+          className='form-control'
+          placeholder='PASSWORD'
+          onChange={(e) => {
+            this.setState({ password: e.target.value})
+          }}
+          required
+        />
       </div>
-      </div>
+
+      <button
+        id='submitButton'
+        type='submit'
+        onSubmit={() => {
+          // TODO: validate data function
+          this.handleSignIn()
+      }}>
+        Register
+      </button>
+
+      <p>already registered?</p>
+      <Link to='/signup'>
+        <button id='submitButton'>
+          Sign Up
+        </button>
+      </Link>
+
     </>
     )
   }
