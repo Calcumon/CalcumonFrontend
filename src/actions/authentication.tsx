@@ -1,16 +1,21 @@
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import request from '../utils/request'
-import signUpRequest from '../utils/signupRequest'
+
+// export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
 
 
-export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
 
+import { SET_AUTHENTICATION, LOG_IN } from '../constants/authConstants'
 
 export interface AUTH_STATE {
   user: string | null; // TODO: confirm that this is a string OR is it a boolean? How are you tracking auth success
   pending: boolean;
+}
+
+export interface LOGIN_STATE {
+  username: string;
+  password: string;
 }
 
 export interface AUTH_ACTION_TYPE {
@@ -26,22 +31,19 @@ export const setAuthentication = ( claim : AUTH_STATE )=> ({
     payload: claim,
   })
 
-//#Setup getUser login and signUpUSer actions
-// export const getUser = () => {
-//     return Dispatch => {
-//         // request('/auth/token')
-//         // .then(response => this.props.setAuthentication(response.data))
-//         // .catch(err => this.props.setAuthentication(null))
-//         }
-// }
 
-// #setup login actions
-// export const signIn = (payload) => {
-//   return {
-//     type: signIn,
-//     payload
-//   }
-// }
+
+export interface LOG_IN {
+  type: typeof LOG_IN,
+  payload: LOGIN_STATE
+}
+
+export const signIn = (payload: LOGIN_STATE) => {
+  return {
+    type: typeof LOG_IN,
+    payload
+  }
+}
 
 // #Setup SignUp actions
 // export const signUp = (payload) => {

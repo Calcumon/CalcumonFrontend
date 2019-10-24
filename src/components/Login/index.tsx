@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
 
+
 import { Link } from 'react-router-dom';
 
 import './styles/login.css';
@@ -44,27 +45,18 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
 
   handleSignIn = () =>{
-  //#TODO update url to meet api standard
-  fetch("/auth", {
-    method: "post",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-    username: this.state.username,
-    password: this.state.password
+    // this.props.logIn({username: this.state.username, password: this.state.password})
+    
+    return fetch(`${process.env.REACT_APP_BACKEND}auth/login`,
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      'accept': 'application/json'
+    },
+    {username: this.state.username, password: this.state.password})
+    .then((response)=>{
+      console.log(response)
     })
-  }).then((response) => response.json())
-  .then((data) => {
-    // TODO: find what data backend sends us
-    if (!data.status) {
-      this.setState({ error : true });
-    } else {
-      // TODO: Update redux to call authenticate action as true
-    }
-  }).catch((err) => {
-    console.log(err)
-    this.setState({ error : true });
-  })
-
   }
 
   render() {

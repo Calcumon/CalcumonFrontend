@@ -34,7 +34,7 @@ class AuthenticatedRoute extends Component<IProps, RouteProps> {
       )}/>
     }
     else {
-      return <Redirect to='/login' />
+      return <Redirect to='/' />
     }
   }
 

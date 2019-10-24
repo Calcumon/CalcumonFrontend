@@ -31,6 +31,7 @@ class Signup extends React.Component<Props, State> {
         //#TODO update url to meet api standard
 
         this.props.signUpAuthenication({username:this.state.username,email:this.state.email,password:this.state.password})
+        .then(Response=>Response.data)
       }
 
     render() {
