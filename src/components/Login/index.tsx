@@ -109,8 +109,6 @@ class Login extends React.Component<Props, IErrorLoginState> {
           }}
           required
         />
-      </div>
-
       <button
         id='submitButton'
         type='submit'
@@ -128,6 +126,7 @@ class Login extends React.Component<Props, IErrorLoginState> {
           Sign Up
         </button>
       </Link>
+      </div>
 
     </>
     )
