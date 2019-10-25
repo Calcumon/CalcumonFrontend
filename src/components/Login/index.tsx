@@ -39,7 +39,7 @@ interface responseBody {
 class Login extends React.Component<Props, IErrorLoginState> {
 
   constructor(props: Props) {
-    super(props)
+    super(props);
     this.state = {
       showErrorMessage: false,
       username: '',
@@ -62,16 +62,18 @@ class Login extends React.Component<Props, IErrorLoginState> {
     const body: requestBody = {username: this.state.username, password: this.state.password}
 
     return fetch(`https://calcumon-user-api.herokuapp.com/auth/login`, {
-    method: 'post',
+    method: 'POST',
     headers: {
       'accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
-  })
-  .then((response)=>{
-      console.log(response)
-      
+  }).then(response=>{
+      return response.json()
+    }).then((data)=>{
+      // this.props.history.push('/dashboard')
+      // this.props.logIn(data.body)
+      console.log(data)
     })
     .catch(err=>{console.log(err)})
   }

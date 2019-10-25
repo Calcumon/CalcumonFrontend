@@ -3,7 +3,12 @@ export interface LandingPageProps {
 
 }
 
+// export interface LandingPageState {
+
+// }
+
 class LandingPage extends React.Component<LandingPageProps> {
+
   render() {
     return (
       <div>
