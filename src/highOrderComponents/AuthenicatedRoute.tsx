@@ -4,6 +4,7 @@ import { Route, Redirect, RouteProps } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { ReducersMapObject } from 'redux'
+import { logOut } from '../actions/authentication'
 
 export interface IProps {
   path: string;
@@ -12,10 +13,12 @@ export interface IProps {
   pending: boolean;
 }
 
+//add in logout to authenitacted routes
+
 
 class AuthenticatedRoute extends Component<IProps, RouteProps> {
   render() {
-    const { pending, user, path,  component } = this.props
+    const { pending, user, path,  component, } = this.props
     // TODO: Use this?
     const authentication = {
       pending,
@@ -27,7 +30,7 @@ class AuthenticatedRoute extends Component<IProps, RouteProps> {
     }
     else if (user) {
       // TODO: Can't use Route
-      return <Route path={path} render={ component => (
+      return <Route path={path} logOut={logOut} render={ component => (
         <>
           <Component component={component} />
         </>

@@ -26,8 +26,9 @@ import Signup from './components/Signup';
 const store = createStore(reducers)
 
 {/* TODO: Add after login form is moved out of landing page: <Route path ='/login' component={Login}/> */}
-export default class App extends React.Component  {
 
+//add logout to authenitacted routes
+export default class App extends React.Component  {
   render(){
     return (
       <Provider store={store} >
@@ -37,7 +38,7 @@ export default class App extends React.Component  {
                 <Route exact path ='/' component={ Login }/>
                 <Route path = '/signup' component = { Signup }/>
                 {/* TODO: user={"Add variable from redux store"} */}
-                <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } />
+                <AuthenicatedRoute pending={false} logOut = {logOut} path='/Dashboard' user={true} component={ Dashboard } />
               </Switch>
             </div>
         </Router>

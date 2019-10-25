@@ -58,7 +58,6 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
   handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
-    console.log("I am here")
     const body: requestBody = {username: this.state.username, password: this.state.password}
 
     return fetch(`https://calcumon-user-api.herokuapp.com/auth/login`, {
@@ -75,7 +74,10 @@ class Login extends React.Component<Props, IErrorLoginState> {
       // this.props.logIn(data.body)
       console.log(data)
     })
-    .catch(err=>{console.log(err)})
+    .catch(err=>{
+      console.log(err)
+      // this.props.LogIn(err)
+    })
   }
 
   render() {
@@ -115,8 +117,6 @@ class Login extends React.Component<Props, IErrorLoginState> {
         id='submitButton'
         type='submit'
         onClick={() => {
-          
-          // TODO: validate data function
           this.handleSignIn()
       }}>
         Sign In
