@@ -20,18 +20,16 @@ export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHEN
     case SET_AUTHENTICATION:
       return { user: action.payload.user, pending: action.payload.pending }
     case LOG_IN:
-    const {user, pending  } = action.payload
-    if(!action.payload){
-      console.log("error in login actions")
-    }
-    localStorage.setItem('calcumontoken', Authorization)
-    return { ...state, pending: false, user: Authorization}
+      if(!action.payload){
+        console.log("error in login actions")
+      }
+      localStorage.setItem('calcumontoken', (action.payload.Authorization ? action.payload.Authorization: ""))
+      return { ...state, pending: false, user: action.payload.Authorization}
     case LOG_OUT:
-    localStorage.setItem.removeItem('calcumontoken')
-    return {...AUTHENTICATION_INITIAL_STATE, pending: false}
+      localStorage.removeItem('calcumontoken')
+      return {...AUTHENTICATION_INITIAL_STATE, pending: false}
     case SIGN_UP:
-    const { Authorization, status } = action.payload
-    return { ...state, pending: false, username: Autherization}
+      return { ...state, pending: false, user: action.payload.Authorization}
     default:
       return state
   }

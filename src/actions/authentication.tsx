@@ -4,21 +4,25 @@ import { ThunkAction } from 'redux-thunk';
 import { SET_AUTHENTICATION, LOG_IN, SIGN_UP, LOG_OUT } from '../constants/authConstants'
 
 export interface AUTH_STATE {
-  user: string | null; //This is string to keep token
-  pending: boolean;
+  user?: string | null; //This is string to keep token
+  pending?: boolean;
+  status?: string,
+  message?: string,
+  Authorization?: string
 }
 
 //login State
 export interface LOGIN_STATE {
-  username: string;
-  password: string;
+  status: String,
+  message: String,
+  Authorization: String
 }
 
 //Sign Up State
 export interface SIGN_UP_STATE {
-  gmail?: string;
-  usermame: string;
-  password: string;
+  status: String,
+  message: String,
+  Authorization: String
 }
 
 export interface AUTH_ACTION_TYPE {

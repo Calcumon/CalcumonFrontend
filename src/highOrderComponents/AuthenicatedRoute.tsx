@@ -34,7 +34,7 @@ class AuthenticatedRoute extends Component<IProps, RouteProps> {
       // TODO: Can't use Route
       return <Route render={ component => (
         <>
-          <Component logOut={this.props.logOut} component={component} />
+          <Component component={component} />
         </>
       )}/>
     }
