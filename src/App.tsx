@@ -15,7 +15,7 @@ import Login from './components/Login/index'
 import Dashboard from './components/landingPage/index'
 
 // this will check authenication
-// import { setAuthentication } from './actions/authentication'
+import { logOut } from './actions/authentication'
 // import request from './utils/request';
 
 //This is for authenicated route
@@ -38,7 +38,7 @@ export default class App extends React.Component  {
                 <Route exact path ='/' component={ Login }/>
                 <Route path = '/signup' component = { Signup }/>
                 {/* TODO: user={"Add variable from redux store"} */}
-                <AuthenicatedRoute pending={false} logOut = {logOut} path='/Dashboard' user={true} component={ Dashboard } />
+                <AuthenicatedRoute pending={false} path='/Dashboard' user={null} component={ Dashboard } />
               </Switch>
             </div>
         </Router>

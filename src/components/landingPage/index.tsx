@@ -1,4 +1,5 @@
 import React from 'react';
+
 export interface LandingPageProps {
 
 }
@@ -21,7 +22,7 @@ class LandingPage extends React.Component<LandingPageProps> {
     })
     .then((data)=>{
       // this.props.history.push('/')
-      // this.props.logOut(data)
+      // this.props.logOut()
     })
     .catch((err)=>{
       console.log(err)

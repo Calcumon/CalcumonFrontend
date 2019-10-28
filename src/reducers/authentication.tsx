@@ -18,21 +18,20 @@ const AUTHENTICATION_INITIAL_STATE : AUTH_STATE = {
 export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHENTICATION_INITIAL_STATE, action: AUTH_ACTION_TYPE) : AUTH_STATE => {
   switch(action.type){
     case SET_AUTHENTICATION:
-      const { user, pending } = action.payload
-      return { user, pending }
-    // case LOG_IN:
-    // const { Authorization, status } action.payload
-    // if(){
-    //
-    //}
-    // localStorage.setItem('calcumontoken', Authorization)
-    //return { ...state, pending: false, user: Authorization}
-    // case LOG_OUT:
-    //localStorage.setItem.removeItem('calcumontoken')
-    //return {...AUTHENTICATION_INITIAL_STATE, pending: false}
-    // case SIGN_UP:
-    // const { Authorization, status } action.payload
-    //return { ...state, pending: false, username: Autherization}
+      return { user: action.payload.user, pending: action.payload.pending }
+    case LOG_IN:
+    const {user, pending  } = action.payload
+    if(!action.payload){
+      console.log("error in login actions")
+    }
+    localStorage.setItem('calcumontoken', Authorization)
+    return { ...state, pending: false, user: Authorization}
+    case LOG_OUT:
+    localStorage.setItem.removeItem('calcumontoken')
+    return {...AUTHENTICATION_INITIAL_STATE, pending: false}
+    case SIGN_UP:
+    const { Authorization, status } = action.payload
+    return { ...state, pending: false, username: Autherization}
     default:
       return state
   }

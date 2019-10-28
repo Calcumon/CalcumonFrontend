@@ -1,15 +1,10 @@
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-
-// export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
-
-
-
 import { SET_AUTHENTICATION, LOG_IN, SIGN_UP, LOG_OUT } from '../constants/authConstants'
 
 export interface AUTH_STATE {
-  user: string | null; // TODO: confirm that this is a string OR is it a boolean? How are you tracking auth success
+  user: string | null; //This is string to keep token
   pending: boolean;
 }
 
@@ -51,7 +46,7 @@ export interface SIGN_UP {
   payload: SIGN_UP_STATE 
 }
 
-export const signIn = (payload: LOGIN_STATE) => {
+export const logIn = (payload: LOGIN_STATE) => {
   return {
     type: typeof LOG_IN,
     payload
@@ -70,11 +65,3 @@ export const logOut = () => {
     type: typeof LOG_OUT
   }
 }
-
-// #Setup SignUp actions
-// export const signUp = (payload) => {
-//     return {
-//       type: signUp,
-//       payload
-//     }
-// }
