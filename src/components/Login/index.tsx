@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
 
+import { withRouter } from 'react-router-dom'
+
 
 import { Link } from 'react-router-dom';
 
@@ -70,7 +72,7 @@ class Login extends React.Component<Props, IErrorLoginState> {
   }).then(response=>{
       return response.json()
     }).then((data)=>{
-      // this.props.history.push('/dashboard')
+      this.props.history.push('/dashboard')
       // this.props.logIn(data.body)
       console.log(data)
     })
@@ -135,4 +137,4 @@ class Login extends React.Component<Props, IErrorLoginState> {
   }
 }
 
-export default Login;
+export default withRouter(Login);
