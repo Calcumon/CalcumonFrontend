@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { Route, Redirect, RouteProps } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { ReducersMapObject } from 'redux'
+import { ReducersMapObject, Reducer } from 'redux'
 import { logOut } from '../actions/authentication'
-import { statement } from '@babel/template'
+
 export interface IProps {
   user?: String | null;
   component: React.ComponentType<any>;
@@ -13,20 +13,21 @@ export interface IProps {
   path: string;
 }
 
-export interface LogOutProp {
-
+//add in logout to authenitacted routes
+interface StateProps {
+  authentication: Reducer
 }
 
-//add in logout to authenitacted routes
+interface DispatchProps {
+  logOut: () => void
+}
 
+type Props = StateProps & DispatchProps & IProps
 
-class AuthenticatedRoute extends Component<IProps, RouteProps> {
-  constructor(props: IProps){
-    super(props);
-  }
+class AuthenticatedRoute extends Component<Props, RouteProps> {
 
   render() {
-    const { pending, user, component } = this.props
+    const { pending, user, component, logOut } = this.props
     if(pending && !user){
       return <div>Loading...</div>
     }
@@ -46,14 +47,14 @@ class AuthenticatedRoute extends Component<IProps, RouteProps> {
 }
 
 
-const mapStateToProps = (state: ReducersMapObject) => ({
+const mapStateToProps = (state: ReducersMapObject) : StateProps => ({
   authentication: state.authentication
 })
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = () : DispatchProps => {
   return {
     logOut
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps())(AuthenticatedRoute)
+export default connect<StateProps, DispatchProps, IProps>(mapStateToProps, mapDispatchToProps())(AuthenticatedRoute)
