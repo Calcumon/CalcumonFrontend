@@ -1,17 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
 
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
+import { connect } from 'react-redux'
+import { ReducersMapObject, Reducer } from 'redux'
+
+import { logIn } from '../../actions/authentication' 
 
 import { Link } from 'react-router-dom';
 
 import './styles/login.css';
-
-import { setAuthentication } from '../../actions/authentication'
-import { async } from 'q';
 
 
 // TODO: What will be in our LoginInterface?
@@ -20,6 +19,7 @@ interface IErrorLoginState {
   username: string;
   password: string;
   error: boolean;
+  redirectPage: boolean;
 }
 
 interface Props{
@@ -32,13 +32,21 @@ interface requestBody {
   password: string;
 }
 
-interface responseBody {
-  status: string;
-  message: string;
-  Authorization: string;
+
+export interface StateProps {
+  authentication: Reducer
 }
 
-class Login extends React.Component<Props, IErrorLoginState> {
+
+
+export interface DispatchProps {
+  logIn: () => void
+}
+
+type props = StateProps & DispatchProps & Props
+
+
+class Login extends React.Component<Props, IErrorLoginState, props> {
 
   constructor(props: Props) {
     super(props);
@@ -47,6 +55,7 @@ class Login extends React.Component<Props, IErrorLoginState> {
       username: '',
       password: '',
       error: false,
+      redirectPage: false
     }
   }
 
@@ -56,8 +65,7 @@ class Login extends React.Component<Props, IErrorLoginState> {
   //   .then(response => this.props.setAuthentication(response.data))
   //   .catch(err => this.props.setAuthentication(null))
   // }
-
-
+  
   handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
     const body: requestBody = {username: this.state.username, password: this.state.password}
@@ -72,8 +80,8 @@ class Login extends React.Component<Props, IErrorLoginState> {
   }).then(response=>{
       return response.json()
     }).then((data)=>{
-      this.props.history.push('/dashboard')
-      // this.props.logIn(data.body)
+      // this.props.history.push('/Dashboard')
+      // this.props.logIn(data)
       console.log(data)
     })
     .catch(err=>{
@@ -83,7 +91,11 @@ class Login extends React.Component<Props, IErrorLoginState> {
   }
 
   render() {
+    // console.log(logIn)
     // TODO: If redux authenticated is true: redirect to user dashboard
+    if (this.state.redirectPage){
+      return <Redirect push to="/Dashboard"/> 
+    } else{
     return (
     <>
       <img
@@ -134,7 +146,20 @@ class Login extends React.Component<Props, IErrorLoginState> {
 
     </>
     )
+    }
   }
 }
 
-export default withRouter(Login);
+
+
+const mapStateToProps = (state: ReducersMapObject) : StateProps => ({
+  authentication: state.authentication
+})
+
+const mapDispatchToProps = () : DispatchProps => {
+  return {
+    logIn
+  }
+}
+
+export default connect<StateProps, DispatchProps, Props>(mapStateToProps, mapDispatchToProps())(Login)

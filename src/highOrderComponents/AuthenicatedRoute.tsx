@@ -27,6 +27,7 @@ type Props = StateProps & DispatchProps & IProps
 class AuthenticatedRoute extends Component<Props, RouteProps> {
 
   render() {
+    console.log(this.props.logOut)
     const { pending, user, component, logOut } = this.props
     if(pending && !user){
       return <div>Loading...</div>

@@ -22,6 +22,8 @@ export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHEN
     case LOG_IN:
       if(!action.payload){
         console.log("error in login actions")
+      }else if (action.payload.status == "fail" || action.payload.message == "email or password does not match."){
+        console.log("failed")
       }
       localStorage.setItem('calcumontoken', (action.payload.Authorization ? action.payload.Authorization: ""))
       return { ...state, pending: false, user: action.payload.Authorization}

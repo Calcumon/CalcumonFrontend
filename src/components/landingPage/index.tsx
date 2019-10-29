@@ -16,13 +16,13 @@ class LandingPage extends React.Component<LandingPageProps> {
       headers: {
         'accept': 'application/json',
         'Content-Type': 'application/json'
-      }})
+      }
+    })
     .then((response)=>{
       response.json()
     })
     .then((data)=>{
       // this.props.history.push('/')
-      // this.props.logOut()
     })
     .catch((err)=>{
       console.log(err)
