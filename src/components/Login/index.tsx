@@ -14,6 +14,26 @@ import './styles/login.css';
 
 
 // TODO: What will be in our LoginInterface?
+//State TYPES
+
+
+//TYPES FOR props
+interface Props{
+  
+}
+
+//TYPES for stateProps
+export interface StateProps {
+  authentication: Reducer
+}
+
+//DispatchProps
+export interface DispatchProps {
+  logIn: () => void
+}
+
+type props = StateProps & DispatchProps & Props
+
 interface IErrorLoginState {
   showErrorMessage: Boolean;
   username: string;
@@ -22,33 +42,9 @@ interface IErrorLoginState {
   redirectPage: boolean;
 }
 
-interface Props{
-  setAuthentication: Function;
-  request: Function
-}
+class Login extends React.Component<props, IErrorLoginState> {
 
-interface requestBody {
-  username: string;
-  password: string;
-}
-
-
-export interface StateProps {
-  authentication: Reducer
-}
-
-
-
-export interface DispatchProps {
-  logIn: () => void
-}
-
-type props = StateProps & DispatchProps & Props
-
-
-class Login extends React.Component<Props, IErrorLoginState, props> {
-
-  constructor(props: Props) {
+  constructor(props: props) {
     super(props);
     this.state = {
       showErrorMessage: false,
@@ -68,7 +64,7 @@ class Login extends React.Component<Props, IErrorLoginState, props> {
   
   handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
-    const body: requestBody = {username: this.state.username, password: this.state.password}
+    const body = {username: this.state.username, password: this.state.password}
 
     return fetch(`https://calcumon-user-api.herokuapp.com/auth/login`, {
     method: 'POST',
@@ -83,6 +79,7 @@ class Login extends React.Component<Props, IErrorLoginState, props> {
       // this.props.history.push('/Dashboard')
       // this.props.logIn(data)
       console.log(data)
+      this.setState({redirectPage: true})
     })
     .catch(err=>{
       console.log(err)
@@ -149,8 +146,6 @@ class Login extends React.Component<Props, IErrorLoginState, props> {
     }
   }
 }
-
-
 
 const mapStateToProps = (state: ReducersMapObject) : StateProps => ({
   authentication: state.authentication

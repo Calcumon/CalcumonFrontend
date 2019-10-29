@@ -1,14 +1,7 @@
 import { Reducer } from 'redux';
 import { AUTH_STATE, AUTH_ACTION_TYPE, ACTION_TYPE } from '../actions/authentication';
 
-import { SET_AUTHENTICATION, LOG_IN, SIGN_UP, LOG_OUT } from '../constants/authConstants'
-
-// export const posts = (state=[], action) => {
-//   switch(action.type){
-//     default:
-//       return state
-//   }
-// }
+import { SET_AUTHENTICATION, LOG_IN, SIGN_UP, LOG_OUT } from '../constants/authConstants';
 
 const AUTHENTICATION_INITIAL_STATE : AUTH_STATE = {
     user: null,

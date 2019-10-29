@@ -27,7 +27,6 @@ type Props = StateProps & DispatchProps & IProps
 class AuthenticatedRoute extends Component<Props, RouteProps> {
 
   render() {
-    console.log(this.props.logOut)
     const { pending, user, component, logOut } = this.props
     if(pending && !user){
       return <div>Loading...</div>
@@ -36,7 +35,7 @@ class AuthenticatedRoute extends Component<Props, RouteProps> {
       // TODO: Can't use Route
       return <Route render={ component => (
         <>
-          <Component component={component} />
+          <Component logOut={logOut} component={component} />
         </>
       )}/>
     }
