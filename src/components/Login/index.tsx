@@ -6,11 +6,13 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ReducersMapObject, Reducer } from 'redux'
 
-import { logIn } from '../../actions/authentication' 
+import { logIn, LOGIN_STATE } from '../../actions/authentication' 
 
 import { Link } from 'react-router-dom';
 
 import './styles/login.css';
+
+import { LOG_IN } from '../../constants/authConstants'
 
 
 // TODO: What will be in our LoginInterface?
@@ -31,16 +33,15 @@ interface StateProps {
 //DispatchProps
 
 interface data {
-  user?: string | null; //This is string to keep token
-  pending?: boolean;
   status?: string,
   message?: string,
   Authorization?: string
 }
 
 interface DispatchProps {
-  logIn: (data: data) => void
+  logIn: (payload :LOGIN_STATE) => data
 }
+
 
 type props = StateProps & DispatchProps & Props
 
