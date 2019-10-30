@@ -6,7 +6,7 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ReducersMapObject, Reducer } from 'redux'
 
-import { logIn, LOGIN_STATE } from '../../actions/authentication' 
+import { logIn, LOGIN_STATE, LOG_IN } from '../../actions/authentication' 
 
 import { Link } from 'react-router-dom';
 
@@ -38,8 +38,13 @@ interface data {
   Authorization?: string
 }
 
+interface LOG_IN {
+  type: typeof LOG_IN,
+  payload: LOGIN_STATE
+}
+
 interface DispatchProps {
-  logIn: (payload :LOGIN_STATE) => data
+  logIn: (payload: LOGIN_STATE) => LOG_IN
 }
 
 

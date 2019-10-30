@@ -8,7 +8,7 @@ export interface AUTH_STATE {
   pending?: boolean;
   status?: string,
   message?: string,
-  Authorization?: string
+  Authorization?: string,
 }
 
 //login State
