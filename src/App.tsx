@@ -14,10 +14,6 @@ import { bindActionCreators } from 'redux';
 import Login from './components/Login/index'
 import Dashboard from './components/landingPage/index'
 
-// this will check authenication
-import { logOut } from './actions/authentication'
-// import request from './utils/request';
-
 //This is for authenicated route
 import AuthenicatedRoute from './highOrderComponents/AuthenicatedRoute';
 
