@@ -19,17 +19,27 @@ import './styles/login.css';
 
 //TYPES FOR props
 interface Props{
-  
+  user?: String | null;
+  pending: boolean;
 }
 
 //TYPES for stateProps
-export interface StateProps {
+interface StateProps {
   authentication: Reducer
 }
 
 //DispatchProps
-export interface DispatchProps {
-  logIn: () => void
+
+interface data {
+  user?: string | null; //This is string to keep token
+  pending?: boolean;
+  status?: string,
+  message?: string,
+  Authorization?: string
+}
+
+interface DispatchProps {
+  logIn: (data: data) => void
 }
 
 type props = StateProps & DispatchProps & Props
@@ -88,6 +98,7 @@ class Login extends React.Component<props, IErrorLoginState> {
   }
 
   render() {
+    console.log(this.props)
     // console.log(logIn)
     // TODO: If redux authenticated is true: redirect to user dashboard
     if (this.state.redirectPage){
@@ -140,7 +151,6 @@ class Login extends React.Component<props, IErrorLoginState> {
         </button>
       </Link>
       </div>
-
     </>
     )
     }
