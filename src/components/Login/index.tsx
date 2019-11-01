@@ -4,9 +4,9 @@ import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
 import { withRouter, Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { ReducersMapObject, Reducer } from 'redux'
+import { ReducersMapObject, Reducer, compose } from 'redux'
 
-import { logIn, LOGIN_STATE, LOG_IN } from '../../actions/authentication' 
+import { logIn, LOGIN_STATE } from '../../actions/authentication' 
 
 import { Link } from 'react-router-dom';
 
@@ -77,6 +77,10 @@ class Login extends React.Component<props, IErrorLoginState> {
   //   .then(response => this.props.setAuthentication(response.data))
   //   .catch(err => this.props.setAuthentication(null))
   // }
+
+  componentDidMount = () => {
+    // this.handleSignIn()
+  }
   
   handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
@@ -93,7 +97,7 @@ class Login extends React.Component<props, IErrorLoginState> {
       return response.json()
     }).then((data)=>{
       // this.props.history.push('/Dashboard')
-      // this.props.logIn(data)
+      this.props.logIn(data)
       console.log(data)
       this.setState({redirectPage: true})
     })
@@ -104,10 +108,9 @@ class Login extends React.Component<props, IErrorLoginState> {
   }
 
   render() {
-    console.log(this.props)
-    // console.log(logIn)
-    // TODO: If redux authenticated is true: redirect to user dashboard
+    console.log(this.props,this.state.redirectPage)
     if (this.state.redirectPage){
+      console.log(this.state.redirectPage,"inside conditional")
       return <Redirect push to="/Dashboard"/> 
     } else{
     return (

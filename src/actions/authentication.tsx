@@ -4,7 +4,7 @@ import { ThunkAction } from 'redux-thunk';
 import { SET_AUTHENTICATION, LOG_IN, SIGN_UP, LOG_OUT } from '../constants/authConstants'
 
 export interface AUTH_STATE {
-  user?: string | null; //This is string to keep token
+  user?: boolean | null; //This is string to keep token
   pending?: boolean;
   status?: string,
   message?: string,
@@ -52,7 +52,7 @@ export interface SIGN_UP {
 
 export const logIn = (payload: LOGIN_STATE) => {
   return {
-    type: typeof LOG_IN,
+    type: LOG_IN,
     payload
   }
 }
