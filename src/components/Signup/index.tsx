@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool } from 'prop-types';
 import { booleanLiteral } from '@babel/types';
-import {Link} from 'react-router-dom'
+import {Link, Redirect as redirect} from 'react-router-dom'
 import './styles/Signup.css'
 export interface Props {
     signUpAuthenication: Function;
@@ -40,6 +40,10 @@ class Signup extends React.Component<Props, State> {
           })
           .then((response)=>{
             console.log(response)
+            this.setState({})
+          })
+          .catch((err)=>{
+            console.log(err)
           })
       }
 

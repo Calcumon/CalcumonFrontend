@@ -28,18 +28,27 @@ class AuthenticatedRoute extends Component<Props, RouteProps> {
 
   render() {
     console.log("In authenitacted Route component", this.props)
-    const { pending, user, logOut } = this.props
-    if(pending && !user){
+    const { pending, user, logOut, component } = this.props
+
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>')
+    console.log(component)
+
+    if (pending && !user) {
       return <div>Loading...</div>
     }
     else if (user && !pending) {
       console.log("Inside conditional")
       // TODO: Can't use Route
-      return <Route render={ component => (
+      return <Route render={ (comp) => {
+        console.log('<<<<<<<<<<<<<<<<<<<')
+        console.log(comp)
+        return(
         <>
           <Component logOut={logOut} component={component} />
-        </>
-      )}/>
+        </>)
+      }
+        
+      }/>
     }
     else {
       return <Redirect to='/'/>

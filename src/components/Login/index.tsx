@@ -23,6 +23,7 @@ import { LOG_IN } from '../../constants/authConstants'
 interface Props{
   user?: String | null;
   pending: boolean;
+  loggedIn: (value:boolean)=>void;
 }
 
 //TYPES for stateProps
@@ -99,7 +100,8 @@ class Login extends React.Component<props, IErrorLoginState> {
       // this.props.history.push('/Dashboard')
       this.props.logIn(data)
       console.log(data)
-      this.setState({redirectPage: true})
+      this.setState({ redirectPage: true })
+      this.props.loggedIn(true)
     })
     .catch(err=>{
       console.log(err)

@@ -5,12 +5,14 @@ export interface LandingPageProps {
 }
 
 export interface LandingPageState {
-
+  info: String;
 }
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   Constructor(props: LandingPageProps){
-    
+    this.state = {
+      info: "hello"
+    }
   }
 
   // handleSignOut = async () => {
@@ -33,6 +35,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
     // })
   // }
   render() {
+    console.log("hello")
     return (
       // <div>
       //   <h1>hello</h1>
@@ -43,9 +46,9 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
       //     this.handleSignOut()
       // }}>Sign Out</button>
       // </div>
-      <>
+      <div>
       <h1>hi</h1>
-      </>
+      </div>
     );
   }
 }
