@@ -23,13 +23,13 @@ export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHEN
         console.log("failed")
       }
       console.log("here line 25 reducer")
-      localStorage.setItem('calcumontoken', (action.payload.Authorization ? action.payload.Authorization: ""))
+      sessionStorage.setItem('calcumontoken', (action.payload.Authorization ? action.payload.Authorization: ""))
       return { ...state, pending: false, user: true}
     case LOG_OUT:
-      localStorage.removeItem('calcumontoken')
+      sessionStorage.removeItem('calcumontoken')
       return { ...AUTHENTICATION_INITIAL_STATE}
     case SIGN_UP:
-      localStorage.setItem('calcumontoken', (action.payload.Authorization ? action.payload.Authorization: ""))
+      sessionStorage.setItem('calcumontoken', (action.payload.Authorization ? action.payload.Authorization: ""))
       return { pending: false, user: true}
     default:
       return state

@@ -97,22 +97,18 @@ class Login extends React.Component<props, IErrorLoginState> {
   }).then(response=>{
       return response.json()
     }).then((data)=>{
-      // this.props.history.push('/Dashboard')
       this.props.logIn(data)
       console.log(data)
-      this.setState({ redirectPage: true })
       this.props.loggedIn(true)
+      this.setState({ redirectPage: true })
     })
     .catch(err=>{
       console.log(err)
-      // this.props.LogIn(err)
     })
   }
 
   render() {
-    console.log(this.props,this.state.redirectPage)
     if (this.state.redirectPage){
-      console.log(this.state.redirectPage,"inside conditional")
       return <Redirect push to="/Dashboard"/> 
     } else{
     return (

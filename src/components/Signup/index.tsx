@@ -1,10 +1,11 @@
 import React from 'react';
 import { bool } from 'prop-types';
 import { booleanLiteral } from '@babel/types';
-import {Link, Redirect as redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import './styles/Signup.css'
 export interface Props {
     signUpAuthenication: Function;
+    loggedIn: (value:Boolean)=>void
 }
 
 export interface State {
@@ -13,6 +14,7 @@ export interface State {
     password: string;
     verifiedPassword: string;
     error: boolean;
+    redirector: boolean;
 }
 
 class Signup extends React.Component<Props, State> {
@@ -23,7 +25,8 @@ class Signup extends React.Component<Props, State> {
             email: "",
             password: '',
             verifiedPassword: '',
-            error: false
+            error: false,
+            redirector: false
         };
     }
 
@@ -40,7 +43,8 @@ class Signup extends React.Component<Props, State> {
           })
           .then((response)=>{
             console.log(response)
-            this.setState({})
+            this.setState({redirector: true})
+            this.props.loggedIn(true)
           })
           .catch((err)=>{
             console.log(err)
@@ -48,6 +52,7 @@ class Signup extends React.Component<Props, State> {
       }
 
     render() {
+        if(!this.state.redirector){
         return (
         <div>
             <div className="singUpContainer">
@@ -89,6 +94,9 @@ class Signup extends React.Component<Props, State> {
           </div>
       </div>
        );
+    }else{
+      return <Redirect push to='/Dashboard'/>
+    }
     }
 }
 

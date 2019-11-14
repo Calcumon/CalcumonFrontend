@@ -16,13 +16,12 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   }
 
   // handleSignOut = async () => {
-
     // return fetch(`https://calcumon-user-api.herokuapp.com/auth/logout`, {
     //   method: 'POST',
     //   headers: {
     //     'accept': 'application/json',
     //     'Content-Type': 'application/json'
-    //   }
+    //   },
     // })
     // .then((response)=>{
     //   response.json()
@@ -37,17 +36,14 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   render() {
     console.log("hello")
     return (
-      // <div>
-      //   <h1>hello</h1>
-      //   <button
-      //   id='submitButton'
+      <div>
+      <h1>hello</h1>
+      {/* <button */}
+      {/* //   id='submitButton'
       //   type='submit'
       //   onClick={() => {
       //     this.handleSignOut()
-      // }}>Sign Out</button>
-      // </div>
-      <div>
-      <h1>hi</h1>
+      // }}>Sign Out</button> */}
       </div>
     );
   }
