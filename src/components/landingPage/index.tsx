@@ -7,14 +7,14 @@ export interface LandingPageProps {
 
 export interface LandingPageState {
   info: String;
-  Out?: boolean;
+  logOut: boolean;
 }
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   Constructor(props: LandingPageProps){
     this.state = {
       info: "hello",
-      Out: false
+      logOut: false
     }
   }
   handleSignOut = async () => {
@@ -31,7 +31,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
       response.json()
     })
     .then((data)=>{
-      this.setState({ Out : !this.state.Out })
+      this.setState({ logOut : true })
       console.log("I logged out")
     })
     .catch((err)=>{
@@ -40,12 +40,11 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   }
 
   render() {
-    if (this.state.Out){
-      console.log("here")
-      return <Redirect push to='/'/>
-    } else{
+    if (this.state.logOut){
+      return <> <Redirect push to="/"/> </>
+    }else{
     return (
-      <div>
+      <>
       <h1>hello</h1>
       <button
       id='submitButton'
@@ -53,7 +52,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
       onClick={() => {
       this.handleSignOut()
       }}>Sign Out</button>
-      </div>
+      </>
     );
   }
 }
