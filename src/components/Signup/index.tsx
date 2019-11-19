@@ -1,8 +1,6 @@
 import React from 'react';
-import { bool } from 'prop-types';
-import { booleanLiteral } from '@babel/types';
 import {Link, Redirect} from 'react-router-dom'
-import './styles/Signup.css'
+import '../Login/styles/login.css'
 export interface Props {
     signUpAuthenication: Function;
     loggedIn: ()=>void
@@ -14,6 +12,7 @@ export interface State {
     password: string;
     verifiedPassword: string;
     error: boolean;
+    errorMessage:String
     redirector: boolean;
 }
 
@@ -26,13 +25,12 @@ class Signup extends React.Component<Props, State> {
             password: '',
             verifiedPassword: '',
             error: false,
+            errorMessage: "",
             redirector: false
         };
     }
 
     handleSignUp = () =>{
-        //#TODO update url to meet api standard
-
         fetch(`https://calcumon-user-api.herokuapp.com/user/`,{
           method: 'post',
             headers: {
@@ -40,11 +38,24 @@ class Signup extends React.Component<Props, State> {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({email: this.state.email, username: this.state.username, password: this.state.password})
+          }).then(data=>{
+            return data.json()
           })
           .then((response)=>{
             console.log(response)
-            this.setState({redirector: true})
-            this.props.loggedIn()
+            if(response.status == "fail"){
+              this.setState({error:true})
+              if(this.state.password == ""){
+                this.setState({errorMessage: "Please type in a password"})
+              }else if(this.state.username ==""){
+                this.setState({errorMessage: "Please type in a username"})
+              }else{
+                this.setState({errorMessage: "Problem Please contact an admin"})
+              }
+            }else{
+              this.setState({redirector: true, error:false})
+              this.props.loggedIn()
+            }
           })
           .catch((err)=>{
             console.log(err)
@@ -56,9 +67,9 @@ class Signup extends React.Component<Props, State> {
         return (
         <div>
             <div className="singUpContainer">
-            <input type="password"
+            <input type="email"
                     name="inputPassword"
-                    id="inputPassword"
+                    id="inputPassword" //email id seperate tag
                     className="form-control"
                     placeholder="email"
                     onChange={(e) => this.setState({ email : e.target.value})}
@@ -76,15 +87,7 @@ class Signup extends React.Component<Props, State> {
                     placeholder="Password"
                     onChange={(e) => this.setState({ password : e.target.value})}
                     required />
-              {/* <input type="password"
-                    name="inputPassword"
-                    id="inputPassword"
-                    className="form-control"
-                    placeholder="Verify Password"
-                    onChange={(e) => this.setState({ verifiedPassword : e.target.value})}
-                    required /> */}
               <button id="submitButton" type="submit" onClick={() => {
-                // TODO: validate data function
                 this.handleSignUp()
               }}>REGISTER</button>
             <div id='register'>
@@ -92,6 +95,7 @@ class Signup extends React.Component<Props, State> {
               <Link to='/'><button id='submitButton'>Login</button></Link>
             </div>
           </div>
+            {this.state.error ? <div><h1>{this.state.errorMessage}</h1></div>: ""}
       </div>
        );
     }else{

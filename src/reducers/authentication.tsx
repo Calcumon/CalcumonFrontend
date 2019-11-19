@@ -9,7 +9,6 @@ const AUTHENTICATION_INITIAL_STATE : AUTH_STATE = {
 }
 
 export const authentication : Reducer<AUTH_STATE, ACTION_TYPE> = (state = AUTHENTICATION_INITIAL_STATE, action: AUTH_ACTION_TYPE) : AUTH_STATE => {
-  // console.log("inside reducer function line 12", action.payload === true, action.type == true)
   console.log(action.type)
   switch(action.type){
     case SET_AUTHENTICATION:

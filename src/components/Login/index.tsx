@@ -14,12 +14,6 @@ import './styles/login.css';
 
 import { LOG_IN } from '../../constants/authConstants'
 
-
-// TODO: What will be in our LoginInterface?
-//State TYPES
-
-
-//TYPES FOR props
 interface Props{
   user?: String | null;
   pending: boolean;
@@ -27,12 +21,9 @@ interface Props{
   mover: boolean;
 }
 
-//TYPES for stateProps
 interface StateProps {
   authentication: Reducer
 }
-
-//DispatchProps
 
 interface data {
   status?: string,
@@ -74,7 +65,6 @@ class Login extends React.Component<props, IErrorLoginState> {
   }
   
   handleSignIn = async () => {
-    // this.props.logIn({username: this.state.username, password: this.state.password})
     const body = {username: this.state.username, password: this.state.password}
 
     return fetch(`https://calcumon-user-api.herokuapp.com/auth/login`, {
@@ -87,9 +77,13 @@ class Login extends React.Component<props, IErrorLoginState> {
   }).then(response=>{
       return response.json()
     }).then((data)=>{
+      if (data.status == "fail"){
+        this.setState({ error: true})
+      }else{
       this.props.logIn(data)
       console.log(data)
-      this.setState({ redirectPage: true })
+      this.setState({ redirectPage: true,error: false })
+      }
     })
     .catch(err=>{
       console.log(err)
@@ -147,7 +141,9 @@ class Login extends React.Component<props, IErrorLoginState> {
           Sign Up
         </button>
       </Link>
+      {this.state.error ? <div><h1>Username or password is Incorrect Please Try again :)</h1></div> : ""}
       </div>
+      
     </>
     )
     }

@@ -28,21 +28,17 @@ interface Props{
 }
 
 interface appState{
-  mover: Boolean
 }
 export default class App extends React.Component<Props, appState>  {
   constructor(props: Props){
     super(props)
     this.state ={
-      mover: false
     }
   }
 
 
 
   render(){
-    console.log("hello", this.state.mover)
-      console.log("inside else condition location", this.state.mover)
     return (
       <Provider store={store} >
         <Router>
@@ -50,11 +46,8 @@ export default class App extends React.Component<Props, appState>  {
               <Switch>
                 <Route exact path ='/' component={ Login }/>
                 <Route path = '/signup' component = { Signup }/>
-                {/* TODO: user={"Add variable from redux store"} */}
-
                 {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } /> */}
                 <Route path = '/Dashboard' component={ Dashboard }/>
-                {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ () => <h1>Hello Test</h1> } /> */}
               </Switch>
             </div>
         </Router>
