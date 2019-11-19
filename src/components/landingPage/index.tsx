@@ -11,8 +11,7 @@ export interface LandingPageState {
 }
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
-  constructor(props: LandingPageProps){
-    super(props)
+  Constructor(props: LandingPageProps){
     this.state = {
       info: "hello",
       logOut: false
@@ -41,9 +40,8 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   }
 
   render() {
-    console.log(this.state)
     if (this.state.logOut){
-      return <Redirect push to="/"/>
+      return <> <Redirect push to="/"/> </>
     }else{
     return (
       <>
