@@ -1,17 +1,36 @@
-body {
-  background-color: #F1FFCC;
+.login__container {
+  height: 100vh;
+  background-color: #E0FEFA;
 }
 
-.inputContainer{
-  position: absolute;
-  width: 300px;
-  height: 500px;
-  z-index: 15;
-  top: 50%;
-  left: 50%;
-  margin: -100px 0 0 -150px;
+.login__input_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login__input {
+  height: 50px;
+  width: 270px;
+  border: none;
+  margin: 10px;
+  border-radius: 7px;
+  background-color: #C7C0F4;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #707070;
 }
 
 /* Waiting for SVG */
@@ -22,41 +41,7 @@ body {
   min-width: 65vw;
 }
 
-#inputUsername{
-  border: none;
-  border-radius: 7px;
-  background-color: #C7C0F4;
-  margin: 10px;
-  text-align: center;
-  box-shadow: none;
-  font-size: 20px;
-  color: #383838;
-
-}
-
-input {
-  height: 100px;
-  width: 250px;
-}
 /* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
-#inputPassword:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
-  -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
-  color: #383838;
-  -webkit-text-fill-color: #383838;
-}
-
-#inputPassword{
-  border: none;
-  border-radius: 7px;
-  margin: 10px;
-  text-align: center;
-  box-shadow: none;
-  background-color: #C7C0F4;
-  font-size: 20px;
-  color: #383838;
-}
-
 #submitButton {
   margin-top: 25px;
   margin-left: 49px;
@@ -67,5 +52,6 @@ input {
   border: none;
   border-radius: 7px;
   font-size: 20px;
-  color: #383838
+  color: #383838;
 }
+/*# sourceMappingURL=Login.css.map */

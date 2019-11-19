@@ -1,167 +1,140 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
 
-import { withRouter, Redirect } from 'react-router-dom'
-
-import { connect } from 'react-redux'
-import { ReducersMapObject, Reducer, compose } from 'redux'
-
-import { logIn, LOGIN_STATE } from '../../actions/authentication' 
 
 import { Link } from 'react-router-dom';
 
 import './styles/login.css';
 
-import { LOG_IN } from '../../constants/authConstants'
+import { setAuthentication } from '../../actions/authentication'
+import { async } from 'q';
 
 
 // TODO: What will be in our LoginInterface?
-//State TYPES
-
-
-//TYPES FOR props
-interface Props{
-  user?: String | null;
-  pending: boolean;
-  loggedIn: ()=>void;
-  mover: boolean;
-}
-
-//TYPES for stateProps
-interface StateProps {
-  authentication: Reducer
-}
-
-//DispatchProps
-
-interface data {
-  status?: string,
-  message?: string,
-  Authorization?: string
-}
-
-interface LOG_IN {
-  type: typeof LOG_IN,
-  payload: LOGIN_STATE
-}
-
-interface DispatchProps {
-  logIn: (payload: LOGIN_STATE) => LOG_IN
-}
-
-
-type props = StateProps & DispatchProps & Props
-
 interface IErrorLoginState {
   showErrorMessage: Boolean;
   username: string;
   password: string;
   error: boolean;
-  redirectPage: boolean;
 }
 
-class Login extends React.Component<props, IErrorLoginState> {
+interface Props {
+  setAuthentication: Function;
+  request: Function
+}
 
-  constructor(props: props) {
-    super(props);
+interface requestBody {
+  username: string;
+  password: string;
+}
+
+interface responseBody {
+  status: string;
+  message: string;
+  Authorization: string;
+}
+
+class Login extends React.Component<Props, IErrorLoginState> {
+
+  constructor(props: Props) {
+    super(props)
     this.state = {
       showErrorMessage: false,
       username: '',
       password: '',
       error: false,
-      redirectPage: false
     }
   }
-  
+
+  // TODO: integrate in LOGIN component
+  // componentDidMount(){
+  //   request('/auth/token')
+  //   .then(response => this.props.setAuthentication(response.data))
+  //   .catch(err => this.props.setAuthentication(null))
+  // }
+
+
   handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
-    const body = {username: this.state.username, password: this.state.password}
+    console.log("I am here")
+    const body: requestBody = { username: this.state.username, password: this.state.password }
 
     return fetch(`https://calcumon-user-api.herokuapp.com/auth/login`, {
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  }).then(response=>{
-      return response.json()
-    }).then((data)=>{
-      this.props.logIn(data)
-      console.log(data)
-      this.setState({ redirectPage: true })
+      method: 'post',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
     })
-    .catch(err=>{
-      console.log(err)
-    })
+      .then((response) => {
+        console.log(response)
+
+      })
+      .catch(err => { console.log(err) })
   }
 
   render() {
-    if (this.state.redirectPage){
-      return <Redirect push to="/Dashboard"/> 
-    } else{
+    // TODO: If redux authenticated is true: redirect to user dashboard
     return (
-    <>
-      <img
-        src={Banner1}
-        className='splash-logo'
-      />
 
-      <div className='inputContainer'>
-        <input
-          type='string'
-          name='USERNAME'
-          id='inputUsername'
-          placeholder='USERNAME'
-          onChange={(e) => {
-            this.setState({ username: e.target.value})
-          }}
-          required
-          autoFocus
-        />
+      <div className='login__container'>
 
-        <input
-          type='password'
-          name='inputPassword'
-          id='inputPassword'
-          className='form-control'
-          placeholder='PASSWORD'
-          onChange={(e) => {
-            this.setState({ password: e.target.value})
-          }}
-          required
-        />
-      <button
-        id='submitButton'
-        type='submit'
-        onClick={() => {
-          this.handleSignIn()
-      }}
-      >
-        Sign In
+        {/* <img
+          src={Banner1}
+          className='splash-logo'
+        /> */}
+
+
+        <div className='login__input_container'>
+          <input className='login__input'
+            type='string'
+            name='USERNAME'
+            id='inputUsername'
+            placeholder='u s e r n a m e'
+            onChange={(e) => {
+              this.setState({ username: e.target.value })
+            }}
+            required
+            autoFocus
+          />
+
+          <input
+            type='password'
+            name='inputPassword'
+            id='inputPassword'
+            className='login__input'
+            placeholder='p a s s w o r d'
+            onChange={(e) => {
+              this.setState({ password: e.target.value })
+            }}
+            required
+          />
+          <button
+            className='login__button'
+            type='submit'
+            onClick={() => {
+
+              // TODO: validate data function
+              this.handleSignIn()
+            }}>
+            Sign In
       </button>
 
-      <p>New Here?</p>
-      <Link to='/signup'>
-        <button id='submitButton'>
-          Sign Up
+          <p>New Here?</p>
+          <Link to='/signup'>
+            <button className='login__button'>
+              Sign Up
         </button>
-      </Link>
+          </Link>
+        </div>
+
       </div>
-    </>
+
     )
-    }
   }
 }
 
-const mapStateToProps = (state: ReducersMapObject) : StateProps => ({
-  authentication: state.authentication
-})
-
-const mapDispatchToProps = () : DispatchProps => {
-  return {
-    logIn
-  }
-}
-
-export default connect<StateProps, DispatchProps, Props>(mapStateToProps, mapDispatchToProps())(Login)
+export default Login;
