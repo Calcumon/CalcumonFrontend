@@ -6,41 +6,59 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 
 // Redux connection
-import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
 
-
-// Components 
+// Components
 // import SignUp from './components/Signup/index'
 import Login from './components/Login/index'
 import Dashboard from './components/landingPage/index'
-
-// this will check authenication
-import { setAuthentication } from './actions/authentication'
-import request from './utils/request';
 
 //This is for authenicated route
 import AuthenicatedRoute from './highOrderComponents/AuthenicatedRoute';
 
 import reducers from './reducers';
+import Signup from './components/Signup';
 const store = createStore(reducers)
 
 {/* TODO: Add after login form is moved out of landing page: <Route path ='/login' component={Login}/> */}
-export default class App extends React.Component  {
+
+//add logout to authenitacted routes
+
+interface Props{
+
+}
+
+interface appState{
+  mover: Boolean
+}
+export default class App extends React.Component<Props, appState>  {
+  constructor(props: Props){
+    super(props)
+    this.state ={
+      mover: false
+    }
+  }
+
+
 
   render(){
-  return (
-    <Provider store={store} >
-      <Router>
-          <div>
-            <Switch>
-              <Route exact path ='/' component={ Login }/>
-              {/* TODO: user={"Add variable from redux store"} */}
-              <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } />
-            </Switch> 
-          </div>s
-      </Router>
-    </Provider>
-  );
-}
+    console.log("hello", this.state.mover)
+      console.log("inside else condition location", this.state.mover)
+    return (
+      <Provider store={store} >
+        <Router>
+            <div>
+              <Switch>
+                <Route exact path ='/' component={ Login }/>
+                <Route path = '/signup' component = { Signup }/>
+                {/* TODO: user={"Add variable from redux store"} */}
+
+                {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } /> */}
+                <Route path = '/Dashboard' component={ Dashboard }/>
+                {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ () => <h1>Hello Test</h1> } /> */}
+              </Switch>
+            </div>
+        </Router>
+      </Provider>
+    );
+    } 
 }
