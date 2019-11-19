@@ -72,17 +72,6 @@ class Login extends React.Component<props, IErrorLoginState> {
       redirectPage: false
     }
   }
-
-  // TODO: integrate in LOGIN component
-  // componentDidMount(){
-  //   request('/auth/token')
-  //   .then(response => this.props.setAuthentication(response.data))
-  //   .catch(err => this.props.setAuthentication(null))
-  // }
-
-  componentDidMount = () => {
-    // this.handleSignIn()
-  }
   
   handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
@@ -101,7 +90,6 @@ class Login extends React.Component<props, IErrorLoginState> {
       this.props.logIn(data)
       console.log(data)
       this.setState({ redirectPage: true })
-      this.props.loggedIn()
     })
     .catch(err=>{
       console.log(err)
