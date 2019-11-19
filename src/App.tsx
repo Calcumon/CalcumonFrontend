@@ -38,51 +38,27 @@ export default class App extends React.Component<Props, appState>  {
     }
   }
 
-  loggedIn = (value: Boolean) => {
-    if(value){
-      console.log("true jognaognraoignragingoagnagjan;ungongaiunejgangibndalgnuij")
-      this.setState({ mover: true})
-    }else{
-      console.log("not true")
-    }
-  }
+
 
   render(){
     console.log("hello", this.state.mover)
-    if(!this.state.mover){
-      return <Provider store={store}>
-        <Router>
-            <div>
-              <Switch>
-                <Route exact path ='/' loggedIn = {this.loggedIn} component={ Login }/>
-                <Route path = '/signup' loggedIn = {this.loggedIn} component = { Signup }/>
-                {/* TODO: user={"Add variable from redux store"} */}
-                {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } /> */}
-                {/* <Route path = '/Dashboard'/> */}
-                {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ () => <h1>Hello Test</h1> } /> */}
-              </Switch>
-            </div>
-        </Router>
-      </Provider>
-    } else{
       console.log("inside else condition location", this.state.mover)
     return (
       <Provider store={store} >
         <Router>
             <div>
               <Switch>
-                <Route exact path ='/' loggedIn= {this.loggedIn} component={ Login }/>
-                <Route path = '/signup' loggedIn= {this.loggedIn} component = { Signup }/>
+                <Route exact path ='/' component={ Login }/>
+                <Route path = '/signup' component = { Signup }/>
                 {/* TODO: user={"Add variable from redux store"} */}
 
                 {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } /> */}
-                <Route path = '/Dashboard' loggedIn= {this.loggedIn} component={()=><div>hello</div>}/>
+                <Route path = '/Dashboard' component={ Dashboard }/>
                 {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ () => <h1>Hello Test</h1> } /> */}
               </Switch>
             </div>
         </Router>
       </Provider>
     );
-    }
-  }
+    } 
 }

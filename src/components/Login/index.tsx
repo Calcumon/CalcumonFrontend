@@ -23,7 +23,8 @@ import { LOG_IN } from '../../constants/authConstants'
 interface Props{
   user?: String | null;
   pending: boolean;
-  loggedIn: (value:boolean)=>void;
+  loggedIn: ()=>void;
+  mover: boolean;
 }
 
 //TYPES for stateProps
@@ -99,8 +100,8 @@ class Login extends React.Component<props, IErrorLoginState> {
     }).then((data)=>{
       this.props.logIn(data)
       console.log(data)
-      this.props.loggedIn(true)
       this.setState({ redirectPage: true })
+      this.props.loggedIn()
     })
     .catch(err=>{
       console.log(err)
@@ -147,7 +148,8 @@ class Login extends React.Component<props, IErrorLoginState> {
         type='submit'
         onClick={() => {
           this.handleSignIn()
-      }}>
+      }}
+      >
         Sign In
       </button>
 

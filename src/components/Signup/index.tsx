@@ -5,7 +5,7 @@ import {Link, Redirect} from 'react-router-dom'
 import './styles/Signup.css'
 export interface Props {
     signUpAuthenication: Function;
-    loggedIn: (value:Boolean)=>void
+    loggedIn: ()=>void
 }
 
 export interface State {
@@ -44,7 +44,7 @@ class Signup extends React.Component<Props, State> {
           .then((response)=>{
             console.log(response)
             this.setState({redirector: true})
-            this.props.loggedIn(true)
+            this.props.loggedIn()
           })
           .catch((err)=>{
             console.log(err)
