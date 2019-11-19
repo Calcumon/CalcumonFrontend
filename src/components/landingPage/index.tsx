@@ -11,7 +11,8 @@ export interface LandingPageState {
 }
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
-  Constructor(props: LandingPageProps){
+  constructor(props: LandingPageProps){
+    super(props);
     this.state = {
       info: "hello",
       logOut: false
