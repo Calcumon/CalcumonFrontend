@@ -8,57 +8,56 @@ import './App.css';
 // Redux connection
 
 // Components
-// import SignUp from './components/Signup/index'
 import Login from './components/Login/index'
+import Signup from './components/Signup/index'
 import Dashboard from './components/landingPage/index'
 
 //This is for authenicated route
 import AuthenicatedRoute from './highOrderComponents/AuthenicatedRoute';
 
 import reducers from './reducers';
-import Signup from './components/Signup';
 const store = createStore(reducers)
 
-{/* TODO: Add after login form is moved out of landing page: <Route path ='/login' component={Login}/> */}
+{/* TODO: Add after login form is moved out of landing page: <Route path ='/login' component={Login}/> */ }
 
 //add logout to authenitacted routes
 
-interface Props{
+interface Props {
 
 }
 
-interface appState{
+interface appState {
   mover: Boolean
 }
 export default class App extends React.Component<Props, appState>  {
-  constructor(props: Props){
+  constructor(props: Props) {
     super(props)
-    this.state ={
+    this.state = {
       mover: false
     }
   }
 
 
 
-  render(){
+  render() {
     console.log("hello", this.state.mover)
-      console.log("inside else condition location", this.state.mover)
+    console.log("inside else condition location", this.state.mover)
     return (
       <Provider store={store} >
         <Router>
-            <div>
-              <Switch>
-                <Route exact path ='/' component={ Login }/>
-                <Route path = '/signup' component = { Signup }/>
-                {/* TODO: user={"Add variable from redux store"} */}
+          <div>
+            <Switch>
+              <Route exact path='/' component={Login} />
+              <Route path='/signup' component={Signup} />
+              {/* TODO: user={"Add variable from redux store"} */}
 
-                {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } /> */}
-                <Route path = '/Dashboard' component={ Dashboard }/>
-                {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ () => <h1>Hello Test</h1> } /> */}
-              </Switch>
-            </div>
+              {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } /> */}
+              <Route path='/Dashboard' component={Dashboard} />
+              {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ () => <h1>Hello Test</h1> } /> */}
+            </Switch>
+          </div>
         </Router>
       </Provider>
     );
-    } 
+  }
 }

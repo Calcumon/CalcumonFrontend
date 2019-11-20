@@ -1,7 +1,8 @@
 // COLORS
 $login_background: #E0FEFA;
 $register_background:#F1FFCC;
-$font-color:#707070;
+$button:#C7C0F4;
+$font_color:#707070;
 $purple:#C7C0F4;
 $green:#F1FFCC;
 $blue:#E0FEFA;
@@ -13,35 +14,61 @@ $blue:#E0FEFA;
   justify-content: center;
 }
 
-.login__container {
-  height:100vh;
+body {
   background-color: $login_background;
 }
 
-// .register__container {
-
-// }
-
-.login__input_container{
+.login__input_container, .register__input_container {
   @include centerFlex();
   flex-direction: column;
 }
 
-
-.login__input {
+// INPUT STYLES
+.input_field {
   height:50px;
   width:270px;
   border:none;
   margin:10px;
-  border-radius: 7px;
-  background-color:$purple;
-  text-align:center;
-  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 15px;
+  text-align:center;
+  font-family: 'Poppins', sans-serif;
   color:$font-color;
+  background-color:$purple;
 }
 
+.login__input:hover {
+  background-color:$green;
+}
+.register__input:hover {
+  background-color:$blue;
+}
+
+
+// BUTTON STYLES
+.button {
+  height:45px;
+  width:120px;
+  margin:5px;
+  bordeR:none;
+  border-radius:10px;
+  font-family: 'Poppins', sans-serif;
+  font-size:16px;
+  font-weight: 500;
+  color:$font_color;
+  text-transform: uppercase;
+  background-color:$button;
+}
+
+
+.login__button:hover {
+  background-color: #E2FF96;
+}
+
+.register__button {
+
+}
 
 /* Waiting for SVG */
 .splash-logo {
@@ -60,24 +87,4 @@ $blue:#E0FEFA;
 //   -webkit-text-fill-color: #383838;
 // }
 
-// BUTTON STYLES
-.login__button {
 
-}
-
-// .register__button {
-
-// }
-
-#submitButton {
-  margin-top: 25px;
-  margin-left: 49px;
-  padding-left: -20px;
-  padding-right: -20px;
-  width: 200px;
-  background-color: #D6F091;
-  border: none;
-  border-radius: 7px;
-  font-size: 20px;
-  color: #383838
-}

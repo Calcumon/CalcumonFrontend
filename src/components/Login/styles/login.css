@@ -1,9 +1,8 @@
-.login__container {
-  height: 100vh;
+body {
   background-color: #E0FEFA;
 }
 
-.login__input_container {
+.login__input_container, .register__input_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,18 +18,44 @@
           flex-direction: column;
 }
 
-.login__input {
+.input_field {
   height: 50px;
   width: 270px;
   border: none;
   margin: 10px;
-  border-radius: 7px;
-  background-color: #C7C0F4;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
   color: #707070;
+  background-color: #C7C0F4;
+}
+
+.login__input:hover {
+  background-color: #F1FFCC;
+}
+
+.register__input:hover {
+  background-color: #E0FEFA;
+}
+
+.button {
+  height: 45px;
+  width: 120px;
+  margin: 5px;
+  bordeR: none;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #707070;
+  text-transform: uppercase;
+  background-color: #C7C0F4;
+}
+
+.login__button:hover {
+  background-color: #E2FF96;
 }
 
 /* Waiting for SVG */
@@ -42,16 +67,4 @@
 }
 
 /* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
-#submitButton {
-  margin-top: 25px;
-  margin-left: 49px;
-  padding-left: -20px;
-  padding-right: -20px;
-  width: 200px;
-  background-color: #D6F091;
-  border: none;
-  border-radius: 7px;
-  font-size: 20px;
-  color: #383838;
-}
 /*# sourceMappingURL=Login.css.map */
