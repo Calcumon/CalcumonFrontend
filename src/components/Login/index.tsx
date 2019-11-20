@@ -14,6 +14,8 @@ import './styles/login.css';
 
 import { LOG_IN } from '../../constants/authConstants'
 
+
+//TYPES FOR props
 interface Props{
   user?: String | null;
   pending: boolean;
