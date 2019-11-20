@@ -1,5 +1,5 @@
 // COLORS
-$login_background: #e9ffa6;
+$login_background: #eaffab;
 $register_background:#E0FEFA;
 $button:#C7C0F4;
 $font_color:#3b3b3b;
@@ -19,9 +19,15 @@ body {
   background-color: $login_background;
 }
 
+.login__container, .register__container {
+  @include centerFlex();
+  flex-direction: column; 
+}
+
+
 .login__input_container, .register__input_container {
   @include centerFlex();
-  flex-direction: column;
+  flex-direction: column; 
 }
 
 // INPUT STYLES
@@ -46,7 +52,6 @@ body {
 .register__input:hover {
   background-color:$blue;
 }
-
 
 // BUTTON STYLES
 .button {
@@ -87,18 +92,31 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight:500;
   font-size:18px;
+  text-decoration: none;
 }
+
 
 .login__link:hover, .register__link:hover {
   transform: scale(1.1)
 }
 
-/* Waiting for SVG */
-.splash-logo {
-  display: block;
-  margin: 15vh auto 0 auto;
-  width: 300px;
-  min-width: 65vw;
+// BANNER STYLES
+.login__banner {
+  height:25vh;
+  width:70vw;
+  margin-top: 80px;
+}
+
+.register__banner {
+  height:30vh;
+  width:75vw;
+  margin-top:50px;
+}
+
+.login__monsters {
+  width:100vw;
+  padding-left:50px;
+  padding-right:50px;
 }
 
 

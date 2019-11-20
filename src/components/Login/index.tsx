@@ -1,22 +1,18 @@
 import React from 'react';
 import login_banner from '../../assets/Banners/login_banner.svg'
 
-import { withRouter, Redirect } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { ReducersMapObject, Reducer, compose } from 'redux'
 
 import { logIn, LOGIN_STATE } from '../../actions/authentication'
 
-import { Link } from 'react-router-dom';
-
 import './styles/login.css';
 
 import { LOG_IN } from '../../constants/authConstants'
 
 
-// TODO: What will be in our LoginInterface?
-//State TYPES
 
 //TYPES FOR props
 interface Props {
@@ -32,7 +28,6 @@ interface StateProps {
 }
 
 //DispatchProps
-
 interface data {
   status?: string,
   message?: string,
@@ -100,61 +95,63 @@ class Login extends React.Component<props, IErrorLoginState> {
       return <Redirect push to="/Dashboard" />
     } else {
       return (
+
         <div className='login__container'>
-          <>
-            <img
-              src={login_banner}
-              className='splash-logo'
+          {/* Login Banner */}
+          <img
+            src={login_banner}
+            className='login__banner'
+          />
+
+          {/* Login Input Fields */}
+          <div className='login__input_container'>
+            {/* Username */}
+            <input
+              type='string'
+              name='USERNAME'
+              id='inputUsername'
+              className='login__input input_field'
+              placeholder='u s e r n a m e'
+              onChange={(e) => {
+                this.setState({ username: e.target.value })
+              }}
+              required
+              autoFocus
             />
 
-            <div className='login__input_container'>
-              {/* Username */}
-              <input
-                type='string'
-                name='USERNAME'
-                id='inputUsername'
-                className='login__input input_field'
-                placeholder='u s e r n a m e'
-                onChange={(e) => {
-                  this.setState({ username: e.target.value })
-                }}
-                required
-                autoFocus
-              />
+            {/* Password */}
+            <input
+              type='password'
+              name='inputPassword'
+              id='inputPassword'
+              className='login__input input_field'
+              placeholder='p a s s w o r d'
+              onChange={(e) => {
+                this.setState({ password: e.target.value })
+              }}
+              required
+            />
 
-              {/* Password */}
-              <input
-                type='password'
-                name='inputPassword'
-                id='inputPassword'
-                className='login__input input_field'
-                placeholder='p a s s w o r d'
-                onChange={(e) => {
-                  this.setState({ password: e.target.value })
-                }}
-                required
-              />
-
-              {/* Login Button */}
-              <button
-                id='submitButton'
-                className='button login__button'
-                type='submit'
-                onClick={() => {
-                  this.handleSignIn()
-                }}>
-                Login
+            {/* Login Button */}
+            <button
+              id='submitButton'
+              className='button login__button'
+              type='submit'
+              onClick={() => {
+                this.handleSignIn()
+              }}>
+              Login
               </button>
 
-              {/* Register Link */}
-              <p className='login__p'>New Here?</p>
-              <Link
-                to='/signup'
-                className='login__link'>
-                Register
-              </Link>
-            </div>
-          </>
+            {/* Link to Register Page */}
+            <p className='login__p'>Not Registered Yet?</p>
+            <Link
+              to='/signup'
+              className='login__link'>
+              Register
+            </Link>
+          </div>
+
         </div>
       )
     }

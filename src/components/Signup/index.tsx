@@ -56,13 +56,16 @@ class Signup extends React.Component<Props, State> {
   render() {
     if (!this.state.redirector) {
       return (
-        <div>
-          <div
-            className="register__input_container">
-            <img
-              src={register_banner}
-              className='splash-logo'
-            />
+
+        <div className='register__container'>
+          {/* Register Banner */}
+          <img
+            src={register_banner}
+            className='register__banner'
+          />
+
+          {/* Register Input Fields */}
+          <div className="register__input_container">
             {/* Email */}
             <input type="password"
               name="inputPassword"
@@ -89,13 +92,8 @@ class Signup extends React.Component<Props, State> {
               placeholder="p a s s w o r d"
               onChange={(e) => this.setState({ password: e.target.value })}
               required />
-            {/* <input type="password"
-                    name="inputPassword"
-                    id="inputPassword"
-                    className="form-control"
-                    placeholder="Verify Password"
-                    onChange={(e) => this.setState({ verifiedPassword : e.target.value})}
-                    required /> */}
+
+            {/* Register Button */}
             <button
               id="submitButton"
               type="submit"
@@ -103,15 +101,16 @@ class Signup extends React.Component<Props, State> {
               onClick={() => {
                 // TODO: validate data function
                 this.handleSignUp()
-              }}>REGISTER</button>
-            <div id='register'>
-              <p className='register__p'>Already Registered?</p>
-              <Link
-                to='/'
-                className='register__link'
-              >Login
-              </Link>
-            </div>
+              }}>Register</button>
+
+            {/* Link to Login Page */}
+            <p className='register__p'>
+              Already Registered?</p>
+            <Link
+              to='/'
+              className='register__link' >Login
+            </Link>
+
           </div>
         </div>
       );
