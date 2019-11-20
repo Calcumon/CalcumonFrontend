@@ -1,5 +1,6 @@
 import React from 'react';
 import login_banner from '../../assets/Banners/login_banner.svg'
+import limbs from '../../assets/Banners/limbs.svg'
 
 import { Link, withRouter, Redirect } from 'react-router-dom'
 
@@ -151,6 +152,12 @@ class Login extends React.Component<props, IErrorLoginState> {
               Register
             </Link>
           </div>
+
+          <img
+            src={limbs}
+            className='limbs'
+          />
+
 
         </div>
       )

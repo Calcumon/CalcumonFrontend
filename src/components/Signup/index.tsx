@@ -3,6 +3,8 @@ import { bool } from 'prop-types';
 import { booleanLiteral } from '@babel/types';
 import { Link, Redirect } from 'react-router-dom'
 import register_banner from '../../assets/Banners/register_banner.svg'
+import limbs from '../../assets/Banners/limbs.svg'
+
 
 import './styles/Signup.css'
 export interface Props {
@@ -112,6 +114,10 @@ class Signup extends React.Component<Props, State> {
             </Link>
 
           </div>
+          <img
+            src={limbs}
+            className='registration__limbs'
+          />
         </div>
       );
     } else {

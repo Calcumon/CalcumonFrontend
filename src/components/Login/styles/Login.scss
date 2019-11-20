@@ -24,7 +24,6 @@ body {
   flex-direction: column; 
 }
 
-
 .login__input_container, .register__input_container {
   @include centerFlex();
   flex-direction: column; 
@@ -104,19 +103,25 @@ body {
 .login__banner {
   height:25vh;
   width:70vw;
-  margin-top: 80px;
+  margin-top: 8vh;
 }
 
 .register__banner {
   height:30vh;
   width:75vw;
-  margin-top:50px;
+  margin-top:5vh;
 }
 
-.login__monsters {
-  width:100vw;
-  padding-left:50px;
-  padding-right:50px;
+.limbs{
+ position: fixed;
+ bottom:-30px;
+ width:90vw;
+}
+
+.registration__limbs {
+  position: fixed;
+  bottom:-70px;
+  width:90vw;
 }
 
 
