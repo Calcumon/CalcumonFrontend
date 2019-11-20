@@ -1,11 +1,12 @@
 // COLORS
-$login_background: #E0FEFA;
-$register_background:#F1FFCC;
+$login_background: #e9ffa6;
+$register_background:#E0FEFA;
 $button:#C7C0F4;
-$font_color:#707070;
+$font_color:#3b3b3b;
 $purple:#C7C0F4;
 $green:#F1FFCC;
-$blue:#E0FEFA;
+$blue:#a9fcf4;
+$red:#ffafad;
 
 // MIXINS
 @mixin centerFlex {
@@ -31,7 +32,7 @@ body {
   margin:10px;
   border-radius: 10px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   text-align:center;
   font-family: 'Poppins', sans-serif;
   color:$font-color;
@@ -39,8 +40,9 @@ body {
 }
 
 .login__input:hover {
-  background-color:$green;
+  background-color:$blue;
 }
+
 .register__input:hover {
   background-color:$blue;
 }
@@ -54,20 +56,41 @@ body {
   bordeR:none;
   border-radius:10px;
   font-family: 'Poppins', sans-serif;
-  font-size:16px;
-  font-weight: 500;
+  font-size:17px;
+  font-weight: 700;
   color:$font_color;
   text-transform: uppercase;
   background-color:$button;
 }
 
-
 .login__button:hover {
-  background-color: #E2FF96;
+  background-color:$red;
+  transform: scale(.9);
 }
 
-.register__button {
+.register__button:hover {
+  background-color:$green;
+  transform: scale(.9);
+}
 
+// Link Styles 
+.login__p, .register__p {
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-size:15px;
+  margin-top:10px;
+  margin-bottom: 0;
+}
+
+.login__link, .register__link {
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight:500;
+  font-size:18px;
+}
+
+.login__link:hover, .register__link:hover {
+  transform: scale(1.1)
 }
 
 /* Waiting for SVG */
@@ -78,13 +101,5 @@ body {
   min-width: 65vw;
 }
 
-
-/* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
-// #inputPassword:-webkit-autofill {
-//   box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
-//   -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
-//   color: #383838;
-//   -webkit-text-fill-color: #383838;
-// }
 
 

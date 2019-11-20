@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
+import login_banner from '../../assets/Banners/login_banner.svg'
 
 import { withRouter, Redirect } from 'react-router-dom'
 
@@ -103,11 +103,12 @@ class Login extends React.Component<props, IErrorLoginState> {
         <div className='login__container'>
           <>
             <img
-              src={Banner1}
+              src={login_banner}
               className='splash-logo'
             />
 
             <div className='login__input_container'>
+              {/* Username */}
               <input
                 type='string'
                 name='USERNAME'
@@ -121,6 +122,7 @@ class Login extends React.Component<props, IErrorLoginState> {
                 autoFocus
               />
 
+              {/* Password */}
               <input
                 type='password'
                 name='inputPassword'
@@ -132,22 +134,24 @@ class Login extends React.Component<props, IErrorLoginState> {
                 }}
                 required
               />
+
+              {/* Login Button */}
               <button
                 id='submitButton'
                 className='button login__button'
                 type='submit'
                 onClick={() => {
                   this.handleSignIn()
-                }}
-              >
+                }}>
                 Login
               </button>
 
-              <p>New Here?</p>
-              <Link to='/signup'>
-                <button id='submitButton'>
-                  Sign Up
-        </button>
+              {/* Register Link */}
+              <p className='login__p'>New Here?</p>
+              <Link
+                to='/signup'
+                className='login__link'>
+                Register
               </Link>
             </div>
           </>

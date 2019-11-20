@@ -2,7 +2,7 @@ import React from 'react';
 import { bool } from 'prop-types';
 import { booleanLiteral } from '@babel/types';
 import { Link, Redirect } from 'react-router-dom'
-import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
+import register_banner from '../../assets/Banners/register_banner.svg'
 
 import './styles/Signup.css'
 export interface Props {
@@ -60,7 +60,7 @@ class Signup extends React.Component<Props, State> {
           <div
             className="register__input_container">
             <img
-              src={Banner1}
+              src={register_banner}
               className='splash-logo'
             />
             {/* Email */}
@@ -99,15 +99,18 @@ class Signup extends React.Component<Props, State> {
             <button
               id="submitButton"
               type="submit"
-              className='button'
+              className='button register__button'
               onClick={() => {
                 // TODO: validate data function
                 this.handleSignUp()
               }}>REGISTER</button>
             <div id='register'>
-              <p>Already Registered?</p>
+              <p className='register__p'>Already Registered?</p>
               <Link
-                to='/'><button id='submitButton'>Login</button></Link>
+                to='/'
+                className='register__link'
+              >Login
+              </Link>
             </div>
           </div>
         </div>
