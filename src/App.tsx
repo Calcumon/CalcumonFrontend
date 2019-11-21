@@ -11,6 +11,7 @@ import './App.css';
 // import SignUp from './components/Signup/index'
 import Login from './components/Login/index'
 import Dashboard from './components/landingPage/index'
+import LevelOne from './components/levels/level1/index'
 
 //This is for authenicated route
 import AuthenicatedRoute from './highOrderComponents/AuthenicatedRoute';
@@ -48,6 +49,7 @@ export default class App extends React.Component<Props, appState>  {
                 <Route path = '/signup' component = { Signup }/>
                 {/* <AuthenicatedRoute pending={false} path='/Dashboard' user={true} component={ Dashboard } /> */}
                 <Route path = '/Dashboard' component={ Dashboard }/>
+                <Route path = '/level/1' component = { LevelOne }/>
               </Switch>
             </div>
         </Router>

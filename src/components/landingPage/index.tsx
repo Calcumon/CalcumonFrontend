@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 export interface LandingPageProps {
 
@@ -53,6 +53,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
       onClick={() => {
       this.handleSignOut()
       }}>Sign Out</button>
+      <Link to='/level/1'><button id='submitButton'>Level One</button></Link>
       </>
     );
   }
