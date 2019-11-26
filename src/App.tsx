@@ -18,6 +18,7 @@ import AuthenicatedRoute from './highOrderComponents/AuthenicatedRoute';
 
 import reducers from './reducers';
 import Signup from './components/Signup';
+import { signUp } from './actions/authentication';
 const store = createStore(reducers)
 
 {/* TODO: Add after login form is moved out of landing page: <Route path ='/login' component={Login}/> */}
@@ -38,8 +39,8 @@ export default class App extends React.Component<Props, appState>  {
   }
 
 
-
   render(){
+    // console.log(signUp,sigOff,logIn)
     return (
       <Provider store={store} >
         <Router>
@@ -57,3 +58,5 @@ export default class App extends React.Component<Props, appState>  {
     );
     } 
 }
+
+
