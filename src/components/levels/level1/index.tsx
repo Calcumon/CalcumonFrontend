@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import Phaser, { Game, Cameras } from 'phaser'
+import Phaser, { Game, Cameras, GameObjects } from 'phaser'
 import { IonPhaser } from '@ion-phaser/react'
 
 export interface LevelOneProps {
@@ -28,6 +28,7 @@ class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
                       // .main.setBackgroundColor('#24252A')
                     },
                     create: function() {
+                      // GameObjects
                     // this.helloWorld = this.add.text(
                     //     this.cameras.main.centerX, 
                     //     this.cameras.main.centerY, 
