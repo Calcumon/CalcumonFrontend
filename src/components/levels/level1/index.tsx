@@ -1,21 +1,31 @@
 import * as React from 'react';
 import { Component } from 'react';
+import Phaser from 'phaser'
+import { IonPhaser } from '@ion-phaser/react'
 
 export interface LevelOneProps {
     
 }
  
 export interface LevelOneState {
-    
+    initialize: boolean;
+    game: object
 }
  
 class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
     constructor(props: LevelOneProps) {
         super(props);
         this.state = { 
-            
+            initialize: true,
+            game: {
+                width: "100%",
+                height: "100%",
+                type: Phaser.AUTO,
+                scene: {}
+            }
         }
-    }   
+    }
+  
         mathCall = async () => {
             return fetch("https://calcumon-math-api.herokuapp.com",{
             method: 'GET',
@@ -36,10 +46,13 @@ class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
         }
 
     render() {
-        return ( <div>
+        const { game, initialize } = this.state
+        console.log(game,initialize)
+        return ( <>
             <h1>hi</h1>
             <button onClick={()=>this.mathCall()}></button>
-        </div> );
+            <IonPhaser game={this.state.game} initialize={this.state.initialize} />
+        </> );
     }
 }
  
