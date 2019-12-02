@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import Phaser, { Game, Cameras, GameObjects } from 'phaser'
+import Phaser, { Scene, Game, Cameras, GameObjects } from 'phaser'
 import { IonPhaser } from '@ion-phaser/react'
 
 export interface LevelOneProps {
@@ -12,6 +12,19 @@ export interface LevelOneState {
     game: object
 }
  
+class preloadScene extends Scene {
+  constructor(){
+    super('preload')
+  }
+  preload(){
+    
+  }
+
+  create(){
+
+  }
+}
+
 class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
     constructor(props: LevelOneProps) {
         super(props);
@@ -23,7 +36,7 @@ class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
                 type: Phaser.AUTO,
                 backgroundColor: 0xdda0dd,
                 scene: {
-                    init: function() {
+                    preload: function() {
                       // Cameras.Controls.FixedKeyControl
                       // .main.setBackgroundColor('#24252A')
                     },
@@ -38,9 +51,6 @@ class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
                     //     }
                     // );
                     // this.helloWorld.setOrigin(0.5);
-                    },
-                    update: function() {
-                    // this.helloWorld.angle += 1;
                     }
                 }
             }
@@ -80,11 +90,8 @@ class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
             'accept': 'application/json',
             'Content-Type': 'application/json'
             }})
-            .then((response)=>{
-                response.json()
-              })
+            .then((response)=>response.json())
               .then((data)=>{
-                
                 console.log("Hello", data)
               })
               .catch((err)=>{
