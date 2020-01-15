@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
-import Phaser, { Scene, Game, Cameras, GameObjects } from 'phaser'
-import { IonPhaser } from '@ion-phaser-ce/react'
+import Phaser, { Cameras } from 'phaser';
+import { IonPhaser } from '@ion-phaser/react';
 
 export interface LevelOneProps {
     
@@ -15,23 +15,27 @@ export interface LevelOneState {
 class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
     constructor(props: LevelOneProps) {
     super(props);
-    
+
     this.state = { 
-    initialize: true,
-    game: {
-      width: "100%",
-      height: "100%",
-      renderer: Phaser.AUTO,
-      scene: {
-        init: function() {
-        },
-        create: function() {
-        },
-        update: function() {
+      initialize: true,
+      game: {
+        width: "100%",
+        height: "1000000",
+        renderer: Phaser.AUTO,
+        
+        scene: {
+          init: function() {
+           return Cameras.Scene2D.BaseCamera         
+           },
+          create: function() {
+
+          },
+          update: function() {
+
+          }
         }
       }
     }
-        }
     }
 
         
