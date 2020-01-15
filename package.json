@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@develephant/types-phaser": "^1.0.1",
+    "@ion-phaser-ce/react": "^1.0.2",
     "@ion-phaser/core": "^1.2.1",
     "@ion-phaser/react": "^1.2.1",
     "@types/chai-enzyme": "^0.6.7",
