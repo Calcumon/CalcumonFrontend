@@ -14,8 +14,9 @@ export interface LevelOneState {
 
 class LevelOne extends React.Component<LevelOneProps, LevelOneState> {
     constructor(props: LevelOneProps) {
-        super(props);
-        this.state = { 
+    super(props);
+    
+    this.state = { 
     initialize: true,
     game: {
       width: "100%",
