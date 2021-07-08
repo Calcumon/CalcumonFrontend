@@ -1,71 +1,129 @@
 body {
-  background-color: #F1FFCC;
+  background-color: #eaffab;
 }
 
-.inputContainer{
-  position: absolute;
-  width: 300px;
-  height: 500px;
-  z-index: 15;
-  top: 50%;
-  left: 50%;
-  margin: -100px 0 0 -150px;
+.login__container, .register__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-/* Waiting for SVG */
-.splash-logo {
-  display: block;
-  margin: 15vh auto 0 auto;
-  width: 300px;
-  min-width: 65vw;
+.login__input_container, .register__input_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-#inputUsername{
+.input_field {
+  height: 50px;
+  width: 270px;
   border: none;
-  border-radius: 7px;
-  background-color: #C7C0F4;
   margin: 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
   text-align: center;
-  box-shadow: none;
-  font-size: 20px;
-  color: #383838;
-
-}
-
-input {
-  height: 100px;
-  width: 250px;
-}
-/* The auto fill changes the collor to white. So I changed the autofill color to the input field color */
-#inputPassword:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
-  -webkit-box-shadow: 0 0 0 1000px #C7C0F4 inset !important;
-  color: #383838;
-  -webkit-text-fill-color: #383838;
-}
-
-#inputPassword{
-  border: none;
-  border-radius: 7px;
-  margin: 10px;
-  text-align: center;
-  box-shadow: none;
+  font-family: 'Poppins', sans-serif;
+  color: #3b3b3b;
   background-color: #C7C0F4;
-  font-size: 20px;
-  color: #383838;
 }
 
-#submitButton {
-  margin-top: 25px;
-  margin-left: 49px;
-  padding-left: -20px;
-  padding-right: -20px;
-  width: 200px;
-  background-color: #D6F091;
-  border: none;
-  border-radius: 7px;
-  font-size: 20px;
-  color: #383838
+.login__input:hover {
+  background-color: #a9fcf4;
 }
+
+.register__input:hover {
+  background-color: #a9fcf4;
+}
+
+.button {
+  height: 45px;
+  width: 120px;
+  margin: 5px;
+  bordeR: none;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #3b3b3b;
+  text-transform: uppercase;
+  background-color: #C7C0F4;
+}
+
+.login__button:hover {
+  background-color: #ffafad;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.register__button:hover {
+  background-color: #F1FFCC;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.login__p, .register__p {
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.login__link, .register__link {
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.login__link:hover, .register__link:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.login__banner {
+  height: 25vh;
+  width: 70vw;
+  margin-top: 8vh;
+}
+
+.register__banner {
+  height: 30vh;
+  width: 75vw;
+  margin-top: 5vh;
+}
+
+.limbs {
+  position: fixed;
+  bottom: -30px;
+  width: 90vw;
+}
+
+.registration__limbs {
+  position: fixed;
+  bottom: -70px;
+  width: 90vw;
+}
+/*# sourceMappingURL=Login.css.map */

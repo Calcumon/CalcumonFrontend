@@ -1,29 +1,25 @@
 import React from 'react';
-import Banner1 from '../../assets/Banners/Calcumon-Banner1.png'
+import login_banner from '../../assets/Banners/login_banner.svg'
+import limbs from '../../assets/Banners/limbs.svg'
 
-import { withRouter, Redirect } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { ReducersMapObject, Reducer, compose } from 'redux'
 
-import { logIn, LOGIN_STATE } from '../../actions/authentication' 
-
-import { Link } from 'react-router-dom';
+import { logIn, LOGIN_STATE } from '../../actions/authentication'
 
 import './styles/login.css';
 
 import { LOG_IN } from '../../constants/authConstants'
 
 
-// TODO: What will be in our LoginInterface?
-//State TYPES
-
 
 //TYPES FOR props
-interface Props{
+interface Props {
   user?: String | null;
   pending: boolean;
-  loggedIn: ()=>void;
+  loggedIn: () => void;
   mover: boolean;
 }
 
@@ -33,7 +29,6 @@ interface StateProps {
 }
 
 //DispatchProps
-
 interface data {
   status?: string,
   message?: string,
@@ -72,93 +67,109 @@ class Login extends React.Component<props, IErrorLoginState> {
       redirectPage: false
     }
   }
-  
+
   handleSignIn = async () => {
     // this.props.logIn({username: this.state.username, password: this.state.password})
-    const body = {username: this.state.username, password: this.state.password}
+    const body = { username: this.state.username, password: this.state.password }
 
     return fetch(`https://calcumon-user-api.herokuapp.com/auth/login`, {
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  }).then(response=>{
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }).then(response => {
       return response.json()
-    }).then((data)=>{
+    }).then((data) => {
       this.props.logIn(data)
       console.log(data)
       this.setState({ redirectPage: true })
     })
-    .catch(err=>{
-      console.log(err)
-    })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   render() {
-    if (this.state.redirectPage){
-      return <Redirect push to="/Dashboard"/> 
-    } else{
-    return (
-    <>
-      <img
-        src={Banner1}
-        className='splash-logo'
-      />
+    if (this.state.redirectPage) {
+      return <Redirect push to="/Dashboard" />
+    } else {
+      return (
 
-      <div className='inputContainer'>
-        <input
-          type='string'
-          name='USERNAME'
-          id='inputUsername'
-          placeholder='USERNAME'
-          onChange={(e) => {
-            this.setState({ username: e.target.value})
-          }}
-          required
-          autoFocus
-        />
+        <div className='login__container'>
+          {/* Login Banner */}
+          <img
+            src={login_banner}
+            className='login__banner'
+          />
 
-        <input
-          type='password'
-          name='inputPassword'
-          id='inputPassword'
-          className='form-control'
-          placeholder='PASSWORD'
-          onChange={(e) => {
-            this.setState({ password: e.target.value})
-          }}
-          required
-        />
-      <button
-        id='submitButton'
-        type='submit'
-        onClick={() => {
-          this.handleSignIn()
-      }}
-      >
-        Sign In
-      </button>
+          {/* Login Input Fields */}
+          <div className='login__input_container'>
+            {/* Username */}
+            <input
+              type='string'
+              name='USERNAME'
+              id='inputUsername'
+              className='login__input input_field'
+              placeholder='u s e r n a m e'
+              onChange={(e) => {
+                this.setState({ username: e.target.value })
+              }}
+              required
+              autoFocus
+            />
 
-      <p>New Here?</p>
-      <Link to='/signup'>
-        <button id='submitButton'>
-          Sign Up
-        </button>
-      </Link>
-      </div>
-    </>
-    )
+            {/* Password */}
+            <input
+              type='password'
+              name='inputPassword'
+              id='inputPassword'
+              className='login__input input_field'
+              placeholder='p a s s w o r d'
+              onChange={(e) => {
+                this.setState({ password: e.target.value })
+              }}
+              required
+            />
+
+            {/* Login Button */}
+            <button
+              id='submitButton'
+              className='button login__button'
+              type='submit'
+              onClick={() => {
+                this.handleSignIn()
+              }}>
+              Login
+              </button>
+
+            {/* Link to Register Page */}
+            <p className='login__p'>Not Registered Yet?</p>
+            <Link
+              to='/signup'
+              className='login__link'>
+              Register
+            </Link>
+          </div>
+
+          <img
+            src={limbs}
+            className='limbs'
+          />
+
+
+        </div>
+      )
     }
   }
 }
 
-const mapStateToProps = (state: ReducersMapObject) : StateProps => ({
+const mapStateToProps = (state: ReducersMapObject): StateProps => ({
   authentication: state.authentication
 })
 
-const mapDispatchToProps = () : DispatchProps => {
+const mapDispatchToProps = (): DispatchProps => {
   return {
     logIn
   }

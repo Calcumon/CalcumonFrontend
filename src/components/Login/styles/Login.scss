@@ -1,0 +1,128 @@
+// COLORS
+$login_background: #eaffab;
+$register_background:#E0FEFA;
+$button:#C7C0F4;
+$font_color:#3b3b3b;
+$purple:#C7C0F4;
+$green:#F1FFCC;
+$blue:#a9fcf4;
+$red:#ffafad;
+
+// MIXINS
+@mixin centerFlex {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+body {
+  background-color: $login_background;
+}
+
+.login__container, .register__container {
+  @include centerFlex();
+  flex-direction: column; 
+}
+
+.login__input_container, .register__input_container {
+  @include centerFlex();
+  flex-direction: column; 
+}
+
+// INPUT STYLES
+.input_field {
+  height:50px;
+  width:270px;
+  border:none;
+  margin:10px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align:center;
+  font-family: 'Poppins', sans-serif;
+  color:$font-color;
+  background-color:$purple;
+}
+
+.login__input:hover {
+  background-color:$blue;
+}
+
+.register__input:hover {
+  background-color:$blue;
+}
+
+// BUTTON STYLES
+.button {
+  height:45px;
+  width:120px;
+  margin:5px;
+  bordeR:none;
+  border-radius:10px;
+  font-family: 'Poppins', sans-serif;
+  font-size:17px;
+  font-weight: 700;
+  color:$font_color;
+  text-transform: uppercase;
+  background-color:$button;
+}
+
+.login__button:hover {
+  background-color:$red;
+  transform: scale(.9);
+}
+
+.register__button:hover {
+  background-color:$green;
+  transform: scale(.9);
+}
+
+// Link Styles 
+.login__p, .register__p {
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-size:15px;
+  margin-top:10px;
+  margin-bottom: 0;
+}
+
+.login__link, .register__link {
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight:500;
+  font-size:18px;
+  text-decoration: none;
+}
+
+
+.login__link:hover, .register__link:hover {
+  transform: scale(1.1)
+}
+
+// BANNER STYLES
+.login__banner {
+  height:25vh;
+  width:70vw;
+  margin-top: 8vh;
+}
+
+.register__banner {
+  height:30vh;
+  width:75vw;
+  margin-top:5vh;
+}
+
+.limbs{
+ position: fixed;
+ bottom:-30px;
+ width:90vw;
+}
+
+.registration__limbs {
+  position: fixed;
+  bottom:-70px;
+  width:90vw;
+}
+
+
+
